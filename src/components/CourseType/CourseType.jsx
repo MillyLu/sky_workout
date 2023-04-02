@@ -22,21 +22,15 @@ export const Course = (props) => {
         <div className={s.causes}>
           <div className={s.cause}>
             <One className={s.cause_number} />
-            <p className={s.text}>
-              {props.cause1}
-            </p>
+            <p className={s.text}>{props.cause1}</p>
           </div>
           <div className={s.cause}>
             <Two className={s.cause_number} />
-            <p className={s.text}>
-              {props.cause2}
-            </p>
+            <p className={s.text}>{props.cause2}</p>
           </div>
           <div className={s.cause}>
             <Three className={s.cause_number} />
-            <p className={s.text}>
-              {props.cause3}
-            </p>
+            <p className={s.text}>{props.cause3}</p>
           </div>
         </div>
       </div>
@@ -45,26 +39,19 @@ export const Course = (props) => {
         <div>
           <div className={s.list}>
             <div className={s.text}>
-              <ul>
-                <li>{props.directions1}</li>
-                <li>{props.directions2}</li>
-                <li>{props.directions3}</li>
-              </ul>
+              <p>{props.directions1}</p>
+              <p>{props.directions2}</p>
+              <p>{props.directions3}</p>
             </div>
             <div className={s.text}>
-              <ul>
-                <li>{props.directions4}</li>
-                <li>{props.directions5}</li>
-                <li>{props.directions6}</li>
-              </ul>
+              <p>{props.directions4}</p>
+              <p>{props.directions5}</p>
+              <p>{props.directions6}</p>
             </div>
           </div>
         </div>
       </div>
-      <p className={s.text}>
-        {props.text}
-        
-      </p>
+      <p className={s.description}>{props.text}</p>
       <div className={s.application}>
         <div className={s.application_top}>
           <p className={s.application_text}>

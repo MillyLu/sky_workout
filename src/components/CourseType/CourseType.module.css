@@ -52,12 +52,12 @@
 .causes {
     display: flex;
     align-items: flex-start;
-    gap: 40px;
+    gap: 87px;
 }
 
 .cause {
     display: flex;
-    gap: 14px;
+    gap: 24px;
     align-items: flex-start;
     margin: 0;
     padding: 0;
@@ -70,13 +70,23 @@
     font-size: 24px;
     line-height: 32px;
     color: #000000;
+    width: 244px;
+}
+
+.description {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
 }
 
 .list {
     display: flex;
     gap: 168px;
     margin-bottom: 75px;
-    margin-left: 30px;
+    margin-left: 10px;
 }
 
 .directions {
@@ -116,7 +126,6 @@
     width: 823px;
     padding-top: 46px;
     padding-left: 52px;
-
 }
 
 .phone_svg {
