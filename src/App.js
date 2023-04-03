@@ -1,10 +1,16 @@
-
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import { Main } from "./pages/Main/Main";
-
+import { AppRoutes } from "./routes";
 
 function App() {
-  return <Main />;
+  return (
+    <React.StrictMode>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </React.StrictMode>
+  );
 }
 
 export default App;
