@@ -1,0 +1,29 @@
+.item {
+  background-color: #fff;
+  position: relative;
+  width: 360px;
+  height: 480px;
+  border-radius: 30px;
+  transition: all 0.3s;
+}
+
+.item:hover {
+  transform: scale(1.03);
+  box-shadow: #03020a 4px 2px 64px;
+}
+
+.img {
+  border-radius: 30px;
+}
+
+.title {
+  width: 290px;
+  height: 120px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  color: #000000;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
