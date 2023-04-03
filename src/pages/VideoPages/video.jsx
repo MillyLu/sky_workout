@@ -1,4 +1,4 @@
-import Logo from './img/logo.png';
+import Logo from '../../img/logo.svg';
 import s from './video.module.css';
 
 const ProgressBar = ({ progress }) => {
@@ -10,7 +10,7 @@ const ProgressBar = ({ progress }) => {
   );
 };
 
-export const video = () => {
+export const Video = () => {
     return (
       <div className={s.lessons}>
         <header className={s.header}>
