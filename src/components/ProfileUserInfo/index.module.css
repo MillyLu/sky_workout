@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'StratosSkyeng';
+    src: local('StratosSkyeng'), url(../../fonts/Stratos-Regular.woff) format('woff');
+
+  }
+
+
+.userInfo{
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.userInfo__title{
+    font-family: 'StratosSkyeng', sans-serif;
+    font-size: 48px;
+    line-height: 56px;
+    text-align: left;
+    padding-bottom: 26px;
+}
+
+.userInfo__login{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 6px;
+    gap: 5px;
+
+}
+
+.userInfo__password{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 26px;
+    gap: 5px;
+
+}
+
+.userInfo__login_title, 
+.userInfo__login_field,
+.userInfo__password_title,
+.userInfo__password_field{
+    font-family: 'StratosSkyeng', sans-serif;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.userInfo__button{
+    width: 275px;
+    height: 52px;
+    background-color:#580EA2;
+    color: #FFFFFF;
+    border-radius: 46px;
+    border: #580EA2;
+    text-align: center;
+}
+
+.userInfo__button:hover{
+    background-color:#3F007D;
+}
+
+.userInfo__button:active{
+    background-color:#271A58;
+}
