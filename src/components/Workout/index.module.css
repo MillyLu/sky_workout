@@ -1,0 +1,100 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+@font-face {
+    font-family: 'StratosSkyeng';
+    src: local('StratosSkyeng'), url(../../fonts/Stratos-Regular.woff) format('woff');
+
+  }
+
+.card{
+    width: 278px;
+    height: 76px;
+    border: 1px solid black;
+    border-radius: 26px;
+    padding-top: 11px;
+    padding-bottom: 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.cardActive{
+    width: 278px;
+    height: 76px;
+    border-radius: 26px;
+    padding-top: 11px;
+    padding-bottom: 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #06B16E;
+    position: relative;
+}
+
+.title{
+    font-family: 'StratosSkyeng', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    text-align: center;
+    letter-spacing: -0.05px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #000000;
+
+}
+
+.titleActive{
+    font-family: 'StratosSkyeng', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    text-align: center;
+    letter-spacing: -0.05px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color:#06B16E;
+    max-width: 188px;
+}
+
+.titleActive::after {
+    content: url(./done.svg);
+    position: absolute;
+    left: 240px;
+    top: 10px;
+    width: 27px;
+    height: 25px;
+  }
+
+.description{
+    font-family: 'StratosSkyeng', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.001em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #000000;
+}
+
+.descriptionActive{
+    font-family: 'StratosSkyeng', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.001em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #06B16E;
+}
