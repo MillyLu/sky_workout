@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.sign_page {
+  background: #271a58;
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.sign_up {
+  width: 366px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 40px 45px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.input {
+  border: none;
+  border-bottom: 0.5px solid #d0cece;
+  padding-bottom: 8px;
+  font-family: "StratosSkyeng", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  outline: none;
+  color: #03020a;
+  padding: 16px 0;
+  width: 278.5px;
+}
+
+.input::placeholder {
+  font-family: "StratosSkyeng", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #d0cece;
+}
+
+.input_login:hover {
+  cursor: pointer;
+}
+
+.input_password:hover {
+  cursor: pointer;
+}
+
+.button_registration {
+  width: 278px;
+  height: 52px;
+  background: transparent;
+  border: 1px solid #d0cece;
+  border-radius: 46px;
+  font-family: "StratosSkyeng", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+  transition: 0.3s;
+}
+
+.button_registration:hover {
+  box-shadow: #d0cece 4px 2px 64px;
+  transform: scale(1.03);
+  background: #f4f5f6;
+}
