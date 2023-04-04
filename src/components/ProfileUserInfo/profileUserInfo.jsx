@@ -1,6 +1,6 @@
 import styles from './index.module.css';
 
-export function ProfileUserInfo () {
+export function ProfileUserInfo ({setActive, setModalActiveLogin}) {
 
     return(
         <div className={styles.userInfo}>
@@ -13,8 +13,8 @@ export function ProfileUserInfo () {
                 <p className={styles.userInfo__password_title}>Пароль: </p>
                 <p className={styles.userInfo__password_field}>4fkhdj880d</p>
             </div>
-            <button className={styles.userInfo__button}>Редактировать логин</button>
-            <button className={styles.userInfo__button}>Редактировать пароль</button>
+            <button onClick={() => setModalActiveLogin(true)} className={styles.userInfo__button}>Редактировать логин</button>
+            <button onClick={() => setActive(true)} className={styles.userInfo__button}>Редактировать пароль</button>
         </div>
     )
 }

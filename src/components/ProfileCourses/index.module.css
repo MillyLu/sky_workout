@@ -32,6 +32,13 @@
     border-radius: 30px;
     position: relative;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+}
+
+
+
+.courses__card:hover .courses__card_button{
+    transform: scale(1.03);
 }
 
 .courses__card_titile {
@@ -57,13 +64,17 @@
     position: absolute;
     top: 410px;
     left:30px;
+    transition: all 0.3s;
 }
 .courses__card_button:hover{
     background-color: #DAF289;
+    transform: scale(1.03);
 }
 .courses__card_button:active{
     background-color: #EBFFAB;
 }
+
+
 
 
 

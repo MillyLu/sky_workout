@@ -1,16 +1,19 @@
-import logo from './logo.png';
+import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from '../../img/logo.svg';
 import styles from './index.module.css';
 
 export function Header () {
 
     return(
         <header className={styles.header}>
-            <img src={logo} className={styles.logo} alt='logo'/>
+            <Link to='/'>
+            <Logo  alt='logo'/>
+            </Link>
             <div className={styles.user}>
                 <div className={styles.userAvatar}></div>
-                <select className={styles.userName} name="select">
+                <select className={styles.userName} defaultValue={'value1'} name="select">
 
-  <option value="value1" className={styles.userName} selected>Сергей</option>
+  <option value="value1" className={styles.userName}>Сергей</option>
   <option value="value2">Другой</option>
   </select>
 
