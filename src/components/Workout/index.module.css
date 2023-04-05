@@ -11,6 +11,10 @@
 
   }
 
+  .link{
+    text-decoration: none;
+  }
+
 .card{
     width: 278px;
     height: 76px;
@@ -53,6 +57,20 @@
 
 }
 
+.header{
+    width: 278px;
+    padding-left: 44.5px;
+    padding-right: 11px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.header:last-child{
+    margin-right: 0px;
+}
+
 .titleActive{
     font-family: 'StratosSkyeng', sans-serif;
     font-style: normal;
@@ -63,17 +81,17 @@
     letter-spacing: -0.05px;
     font-feature-settings: 'pnum' on, 'lnum' on;
     color:#06B16E;
-    max-width: 188px;
+    width: 188px;
 }
 
-.titleActive::after {
+/* .titleActive::after {
     content: url(./done.svg);
     position: absolute;
     left: 240px;
     top: 10px;
     width: 27px;
     height: 25px;
-  }
+  } */
 
 .description{
     font-family: 'StratosSkyeng', sans-serif;
