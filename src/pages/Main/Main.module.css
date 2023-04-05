@@ -27,9 +27,14 @@
   border-radius: 46px;
   color: #ffffff;
   border: none;
-  font-family: "Roboto", sans-serif;
+  font-family: "StratosSkyeng", sans-serif;
   font-weight: 400;
+  font-size: 16px;
   transition: all 0.3s;
+}
+
+.button:active {
+  background: #3b29a1;
 }
 
 .button:hover {
@@ -51,7 +56,7 @@
   padding-bottom: 16px;
   color: #ffffff;
   opacity: 0.5;
-  font-family: "Roboto", sans-serif;
+  font-family: "StratosSkyeng", sans-serif;
   font-weight: 400;
   font-size: 20px;
 }
@@ -59,9 +64,9 @@
 .begin {
   width: 830px;
   color: #f4f4ff;
-  font-family: "Roboto", sans-serif;
+  font-family: "StratosSkyeng", sans-serif;
   font-weight: 400;
-  font-size: 50px;
+  font-size: 60px;
 }
 
 .sticker {
@@ -85,7 +90,7 @@
   background: #c7e957;
   border-radius: 46px;
   border: none;
-  font-family: "Roboto", sans-serif;
+  font-family: "StratosSkyeng", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -96,4 +101,8 @@
   background: #daf289;
   transform: scale(1.03);
   box-shadow: #03020a 4px 2px 64px;
+}
+
+.up_button:active {
+  background: #ebffab;
 }
