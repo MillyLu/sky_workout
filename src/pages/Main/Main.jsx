@@ -21,7 +21,7 @@ export const Main = () => {
           <img className={s.logo} src={Logo} alt="logo" id="logo" />
         </Link>
         <button
-          className={modalActive ? `${s.button} ${s.active}` : `${s.button}`}
+          className={s.button}
           onClick={() => setModalActive(true)}>
           Войти
         </button>

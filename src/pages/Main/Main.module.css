@@ -33,7 +33,7 @@
   transition: all 0.3s;
 }
 
-.button.active {
+.button:active {
   background: #3b29a1;
 }
 
@@ -103,6 +103,6 @@
   box-shadow: #03020a 4px 2px 64px;
 }
 
-.up_button_active {
+.up_button:active {
   background: #ebffab;
 }
