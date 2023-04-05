@@ -84,3 +84,7 @@
   transform: scale(1.03);
   background: #f4f5f6;
 }
+
+.button_registration:active {
+  background: #d9d9d9;
+}
