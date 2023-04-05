@@ -14,7 +14,7 @@ export function Header () {
                 <select className={styles.userName} defaultValue={'value1'} name="select">
 
   <option value="value1" className={styles.userName}>Сергей</option>
-  <option value="value2">Другой</option>
+  <option value="value2">Выйти</option>
   </select>
 
             </div>
