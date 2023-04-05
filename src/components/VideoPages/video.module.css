@@ -102,21 +102,22 @@
   
   .bar {
     width: 278px;
-    height: 36px;
+    height: 41px;
     background: #EDECFF;
     border: 2px solid #565EEF;
     border-radius: 22px
   }
   
   .about {
+    width: 1160px;
     display: flex;
     padding-top: 70px;
     padding-bottom: 94px;
+    justify-content: space-between;
   }
   
   .progress {
   width: 638px;
-  height: 336px;
   left: 662px;
   top: 1030px;
   display: flex;
