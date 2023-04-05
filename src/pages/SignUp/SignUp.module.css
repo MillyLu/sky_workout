@@ -3,22 +3,6 @@
   padding: 0;
 }
 
-.sign_page {
-  background: #271a58;
-  padding-left: calc(50% - 580px);
-  padding-right: calc(50% - 580px);
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
 .sign_up {
   width: 366px;
   background: #ffffff;
