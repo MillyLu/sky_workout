@@ -1,4 +1,4 @@
-import Logo from '../../img/logo.svg';
+
 import s from './video.module.css';
 import ReactPlayer from 'react-player/youtube';
 import { Header } from '../../components/ProfileHeader/profileHeader';
