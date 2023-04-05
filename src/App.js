@@ -8,7 +8,7 @@ function App() {
   return (
     <React.StrictMode>
       <BrowserRouter>
-        <AppRoutes />
+        <AppRoutes/>
       </BrowserRouter>
     </React.StrictMode>
   );

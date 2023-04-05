@@ -1,13 +1,10 @@
 import s from "./Login.module.css";
 import { ReactComponent as Logo } from "../../img/logo.svg";
-import { Link } from "react-router-dom";
 
-export const LogIn = () => {
+export const LogIn = ({ signUp, setSignUp }) => {
   return (
     <div className={s.login}>
-      <Link to="/">
-        <Logo alt="logo" />
-      </Link>
+      <Logo alt="logo" />
       <input
         className={`${s.input} ${s.input_login}`}
         type="text"
@@ -19,10 +16,9 @@ export const LogIn = () => {
         placeholder="Пароль"
       />
       <button className={s.button_login}>Войти</button>
-      <Link to="/signup" className={s.button_registration}>
+      <button className={s.button_registration} onClick={() => setSignUp(true)}>
         Зарегистрироваться
-      </Link>
-      {/* <button className={s.button_registration}>Зарегистрироваться</button> */}
+      </button>
     </div>
   );
 };

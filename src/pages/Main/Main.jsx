@@ -8,21 +8,29 @@ import Bodyflex from "./img/bodyflex.png";
 import { Link } from "react-router-dom";
 import { Modal } from "../../components/Modal/Modal";
 import { LogIn } from "../LogIn/Login";
+import { SignUp } from "../SignUp/SignUp";
 import { WorkoutItem } from "../../components/WorkoutItem/WorkoutItem";
 import s from "./Main.module.css";
 import { useState } from "react";
 
 export const Main = () => {
   const [modalActive, setModalActive] = useState(false);
+  const [signUp, setSignUp] = useState(false);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className={s.mainpage}>
       <header className={s.header}>
         <Link to="/">
           <img className={s.logo} src={Logo} alt="logo" id="logo" />
         </Link>
-        <button
-          className={s.button}
-          onClick={() => setModalActive(true)}>
+        <button className={s.button} onClick={() => setModalActive(true)}>
           Войти
         </button>
       </header>
@@ -54,10 +62,21 @@ export const Main = () => {
           <WorkoutItem name={"Бодифлекс"} img={Bodyflex} />
         </Link>
       </div>
-      <button className={s.up_button}>Наверх ↑</button>
-      <Modal active={modalActive} setActive={setModalActive}>
-        <LogIn />
-      </Modal>
+      <button className={s.up_button} onClick={scrollToTop}>
+        Наверх ↑
+      </button>
+      {modalActive && (
+        <Modal
+          active={modalActive}
+          setActive={setModalActive}
+          setSignUp={setSignUp}>
+          {signUp ? (
+            <SignUp />
+          ) : (
+            <LogIn signUp={signUp} setSignUp={setSignUp} />
+          )}
+        </Modal>
+      )}
     </div>
   );
 };
