@@ -1,5 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
-
+import { Bodyflex } from './pages/Bodyflex/bodyflex'
+import { DanceFitness } from './pages/DanceFitness/dance_fitness'
+import { StepAerobics } from './pages/StepAerobics/step_aerobics'
+import { Stretching } from './pages/Stretching/stretching'
+import { Yoga } from './pages/Yoga/yoga'
+import { Main } from './pages/Main/Main'
+import { Profile } from './pages/Profile/profile'
 import { YDay1 } from './pages/VideoPages/Yoga/yDay1'
 import { YDay2 } from './pages/VideoPages/Yoga/yDay2'
 import { YDay3 } from './pages/VideoPages/Yoga/yDay3'
@@ -12,7 +18,13 @@ import { BDay1 } from './pages/VideoPages/Bodyflex/bDay1'
 export const AppRoutes = () => {
     return (
       <Routes>
-
+        <Route path="/yoga" element={<Yoga />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/stretching" element={<Stretching />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/dance_fitness" element={<DanceFitness />} />StepAerobics
+        <Route path="/step_aerobics" element={<StepAerobics />} />
+        <Route path="/bodyflex" element={<Bodyflex />} />
         <Route path="/yDay1" element={<YDay1 />} />
         <Route path="/yDay2" element={<YDay2 />} />
         <Route path="/yDay3" element={<YDay3 />} />
@@ -21,5 +33,5 @@ export const AppRoutes = () => {
         <Route path="/sDay5" element={<SDay1 />} />
         <Route path="/bDay1" element={<BDay1 />} />
       </Routes>
-    )
-  }
+    );
+  };
