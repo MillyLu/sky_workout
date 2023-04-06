@@ -15,14 +15,42 @@
     margin-bottom: 74px;
 }
 
-.skill_card {
-    background-image: url(../../img/skill_card.jpg);
+.skill_card_yoga {
+    background-image: url(../../img/skill_card_yoga.jpg);
     height: 310px;
     width: 1160px;
     transition: all .5s;
 }
 
-.skill_card:hover {
+.skill_card_stepaerobics {
+    background-image: url(../../img/skill_card_stepaerobics.jpg);
+    height: 310px;
+    width: 1160px;
+    transition: all .5s;
+}
+
+.skill_card_stretching {
+    background-image: url(../../img/skill_card_stretching.jpg);
+    height: 310px;
+    width: 1160px;
+    transition: all .5s;
+}
+
+.skill_card_bodyflex {
+    background-image: url(../../img/skill_card_bodyflex.jpg);
+    height: 310px;
+    width: 1160px;
+    transition: all .5s;
+}
+
+.skill_card_dancefitness {
+    background-image: url(../../img/skill_card_dancefitness.jpg);
+    height: 310px;
+    width: 1160px;
+    transition: all .5s;
+}
+
+.skill_card_yoga:hover {
     transform: scale(1.01);
 }
 

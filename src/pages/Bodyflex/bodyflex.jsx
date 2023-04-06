@@ -1,8 +1,10 @@
 import { Course } from "../../components/CourseType/CourseType.jsx";
+import s from "../../components/CourseType/CourseType.module.css";
 
 export const Bodyflex = () =>{
     return (
         <Course 
+        fon={`${s.skill_card_bodyflex}`}
         name={"Бодифлекс"}
         cause1={"Хотите укрепить легкие и снизить вероятность заболеваний дыхательной системы."}
         cause2={"Улучшить пищеварение."}
