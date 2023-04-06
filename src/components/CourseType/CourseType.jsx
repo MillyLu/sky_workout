@@ -6,13 +6,13 @@ import { ReactComponent as Two } from "../../img/2.svg";
 import { ReactComponent as Three } from "../../img/3.svg";
 import { ReactComponent as Phone } from "../../img/phone.svg";
 
+
 export const Course = (props) => {
   return (
     <div className={s.course_description}>
       <Link to="/" className={s.logo}>
         <Logo alt="лого" />
       </Link>
-      
       <div className={props.fon} >
         <NavLink to="/" className={s.skill_card_name} url={props.fon}>
           {props.name}
@@ -36,7 +36,7 @@ export const Course = (props) => {
           </div>
         </div>
       </div>
-      <div>
+      <div>   
         <h3 className={s.directions}>Направления:</h3>
         <div>
           <div className={s.list}>

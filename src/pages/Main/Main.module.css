@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.mainpage {
+  background: #271a58;
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+}
+
+.button {
+  width: 77px;
+  height: 36px;
+  background: #140d40;
+  border-radius: 46px;
+  color: #ffffff;
+  border: none;
+  font-family: "StratosSkyeng", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.button:active {
+  background: #3b29a1;
+}
+
+.button:hover {
+  background: #2d1f79;
+  transform: scale(1.03);
+  box-shadow: #03020a 4px 2px 64px;
+}
+
+.title {
+  position: relative;
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.online {
+  padding-bottom: 16px;
+  color: #ffffff;
+  opacity: 0.5;
+  font-family: "StratosSkyeng", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.begin {
+  width: 830px;
+  color: #f4f4ff;
+  font-family: "StratosSkyeng", sans-serif;
+  font-weight: 400;
+  font-size: 60px;
+}
+
+.sticker {
+  position: absolute;
+  right: -64px;
+  bottom: -54px;
+}
+
+.main_items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  padding: 54px 0;
+}
+
+.up_button {
+  width: 147px;
+  height: 48px;
+  margin-bottom: 64px;
+  margin-left: calc(50% - 8px);
+  background: #c7e957;
+  border-radius: 46px;
+  border: none;
+  font-family: "StratosSkyeng", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  transition: all 0.3s;
+}
+
+.up_button:hover {
+  background: #daf289;
+  transform: scale(1.03);
+  box-shadow: #03020a 4px 2px 64px;
+}
+
+.up_button:active {
+  background: #ebffab;
+}

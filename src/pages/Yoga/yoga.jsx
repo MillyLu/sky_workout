@@ -3,9 +3,10 @@ import s from "../../components/CourseType/CourseType.module.css";
 
 export const Yoga = () =>{
     return (
-        <Course 
+        <Course
         fon={`${s.skill_card_yoga}`}
         name={"Йога"}
+        url={"https://www.youtube.com/embed/oqe98Dxivns"}
         cause1={"Давно хотели попробовать йогу, но не решались начать."}
         cause2={"Хотите укрепить позвоночник, избавиться от болей в спине и суставах."}
         cause3={"Ищете активность, полезную для тела и души."}

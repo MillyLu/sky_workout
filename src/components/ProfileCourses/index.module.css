@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "StratosSkyeng";
+  src: local("StratosSkyeng"),
+    url(../../fonts/Stratos-Regular.woff) format("woff");
+}
+
+.courses {
+  margin-top: 75px;
+  padding-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.courses__title {
+  font-family: "StratosSkyeng", sans-serif;
+  font-size: 48px;
+  line-height: 56px;
+  text-align: left;
+}
+
+.courses__content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.courses__card {
+  width: 360px;
+  height: 480px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  position: relative;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s;
+}
+
+.courses__card:hover .courses__card_button {
+  transform: scale(1.03);
+}
+
+.courses__card_titile {
+  width: 290px;
+  height: 120px;
+  font-family: "StratosSkyeng", sans-serif;
+  font-style: normal;
+  font-size: 36px;
+  color: #000000;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}

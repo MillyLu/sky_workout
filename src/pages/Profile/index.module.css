@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.content {
+    padding-left: calc(50% - 580px);
+    padding-right: calc(50% - 580px);
+    background-color: #FAFAFA;
+
+}
+
