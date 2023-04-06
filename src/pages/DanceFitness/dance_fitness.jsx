@@ -1,8 +1,10 @@
 import { Course } from "../../components/CourseType/CourseType.jsx";
+import s from "../../components/CourseType/CourseType.module.css";
 
 export const DanceFitness = () =>{
     return (
         <Course 
+        fon={`${s.skill_card_dancefitness}`}
         name={"Танцевальный фитнесс"}
         cause1={"Хотите укрепить мышцы, но тренировки в тренажерном зале для вас скучные и однообразные."}
         cause2={"Хотите сбросить лишний вес, но нет желания мучать себя диетами."}

@@ -1,8 +1,10 @@
 import { Course } from "../../components/CourseType/CourseType.jsx";
+import s from "../../components/CourseType/CourseType.module.css";
 
 export const Stretching = () =>{
     return (
         <Course 
+        fon={`${s.skill_card_stretching}`}
         name={"Стретчинг"}
         cause1={"Хотите подтянуть тело, смоделировать мышечный корсет."}
         cause2={"Улучшить осанку и координацию."}

@@ -1,8 +1,10 @@
 import { Course } from "../../components/CourseType/CourseType.jsx";
+import s from "../../components/CourseType/CourseType.module.css";
 
 export const StepAerobics = () =>{
     return (
         <Course 
+        fon={`${s.skill_card_stepaerobics}`}
         name={"Степ-аэробика"}
         cause1={"Хотите укрепить дыхательную и сердечно-сосудистой системы."}
         cause2={"Быстрый сбросить лишние килограммы."}

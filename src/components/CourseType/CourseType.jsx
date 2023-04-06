@@ -13,13 +13,12 @@ export const Course = (props) => {
       <Link to="/" className={s.logo}>
         <Logo alt="лого" />
       </Link>
-      
-
-      <div className={s.skill_card}>
-        <NavLink to="/" className={s.skill_card_name}>
+      <div className={props.fon} >
+        <NavLink to="/" className={s.skill_card_name} url={props.fon}>
           {props.name}
         </NavLink>
       </div>
+
       <div>
         <h3 className={s.headlines}>Подойдет для вас, если:</h3>
         <div className={s.causes}>
