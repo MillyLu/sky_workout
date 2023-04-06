@@ -22,11 +22,19 @@
     transition: all .5s;
 }
 
+.skill_card_yoga:hover {
+    transform: scale(1.01);
+}
+
 .skill_card_stepaerobics {
     background-image: url(../../img/skill_card_stepaerobics.jpg);
     height: 310px;
     width: 1160px;
     transition: all .5s;
+}
+
+.skill_card_stepaerobics:hover {
+    transform: scale(1.01);
 }
 
 .skill_card_stretching {
@@ -36,11 +44,19 @@
     transition: all .5s;
 }
 
+.skill_card_stretching:hover {
+    transform: scale(1.01);
+}
+
 .skill_card_bodyflex {
     background-image: url(../../img/skill_card_bodyflex.jpg);
     height: 310px;
     width: 1160px;
     transition: all .5s;
+}
+
+.skill_card_bodyflex:hover {
+    transform: scale(1.01);
 }
 
 .skill_card_dancefitness {
@@ -50,7 +66,7 @@
     transition: all .5s;
 }
 
-.skill_card_yoga:hover {
+.skill_card_dancefitness:hover {
     transform: scale(1.01);
 }
 
