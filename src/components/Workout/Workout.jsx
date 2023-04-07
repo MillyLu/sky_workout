@@ -4,12 +4,12 @@ import { ReactComponent as Done } from './done.svg';
 import { Link } from "react-router-dom";
 
 
-export function Workout ({title, description, day}) {
+export function Workout ({title, description, day, path}) {
 
     const [active] = useState(true);   /// true - если тренировка выполнена
 
     return(
-        <Link className={styles.link} to='/video'>
+        <Link className={styles.link} to={path}>
             <div className={active ? styles.cardActive : styles.card}>
             <div className={styles.header}>
 
