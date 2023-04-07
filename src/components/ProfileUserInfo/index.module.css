@@ -45,6 +45,14 @@
     line-height: 32px;
 }
 
+.userInfo__password_field{
+    outline: 0;
+    background-color: inherit;
+    border: none;
+    width: 150px;
+    position: relative;
+}
+
 .userInfo__button{
     width: 275px;
     height: 52px;
@@ -61,4 +69,10 @@
 
 .userInfo__button:active{
     background-color:#271A58;
+}
+
+.userInfo__password_btn{
+    position: fixed;
+    top: 2px;
+    left: 120px;
 }
