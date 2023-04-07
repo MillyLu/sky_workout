@@ -13,9 +13,14 @@ import { WorkoutItem } from "../../components/WorkoutItem/WorkoutItem";
 import s from "./Main.module.css";
 import { useState } from "react";
 
-export const Main = () => {
+export const Main = ({ user, setUser }) => {
   const [modalActive, setModalActive] = useState(false);
+
   const [signUp, setSignUp] = useState(false);
+
+  const toogleLogin = () => {
+    user ? setUser(null) : setUser({ login: "username" });
+  };
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -73,7 +78,12 @@ export const Main = () => {
           {signUp ? (
             <SignUp />
           ) : (
-            <LogIn signUp={signUp} setSignUp={setSignUp} />
+            <LogIn
+              signUp={signUp}
+              setSignUp={setSignUp}
+              user={user}
+              toogleLogin={toogleLogin}
+            />
           )}
         </Modal>
       )}
