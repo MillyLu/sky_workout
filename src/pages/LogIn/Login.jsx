@@ -1,7 +1,8 @@
 import s from "./Login.module.css";
 import { ReactComponent as Logo } from "../../img/logo.svg";
 
-export const LogIn = ({ signUp, setSignUp }) => {
+export const LogIn = ({ signUp, setSignUp, user, toogleLogin }) => {
+
   return (
     <div className={s.login}>
       <Logo alt="logo" />
@@ -15,7 +16,9 @@ export const LogIn = ({ signUp, setSignUp }) => {
         type="password"
         placeholder="Пароль"
       />
-      <button className={s.button_login}>Войти</button>
+      <button className={s.button_login} onClick={() => toogleLogin()}>
+        {user ? "Выйти" : "Войти"}
+      </button>
       <button className={s.button_registration} onClick={() => setSignUp(true)}>
         Зарегистрироваться
       </button>

@@ -1,0 +1,42 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.name {
+  color: #f4f4ff;
+  font-family: "StratosSkyeng", sans-serif;
+  font-weight: 400;
+}
+
+.button {
+  width: 77px;
+  height: 36px;
+  background: #140d40;
+  border-radius: 46px;
+  color: #ffffff;
+  border: none;
+  font-family: "StratosSkyeng", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.button:active {
+  background: #3b29a1;
+}
+
+.button:hover {
+  background: #2d1f79;
+  transform: scale(1.03);
+  box-shadow: #03020a 4px 2px 64px;
+}
