@@ -5,37 +5,23 @@ import Stretching from "./img/stretching.png";
 import Dance from "./img/dance.png";
 import Step from "./img/step.png";
 import Bodyflex from "./img/bodyflex.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Modal } from "../../components/Modal/Modal";
 import { LogIn } from "../LogIn/Login";
 import { SignUp } from "../SignUp/SignUp";
 import { WorkoutItem } from "../../components/WorkoutItem/WorkoutItem";
 import { Profile } from "../../components/Profile/Profile";
 import s from "./Main.module.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export const Main = ({ user, setUser }) => {
   const [modalActive, setModalActive] = useState(false);
 
   const [signUp, setSignUp] = useState(false);
 
-  const [redirect, setRedirect] = useState(false);
-
-  const navigate = useNavigate();
-
   const toogleLogin = () => {
     user ? setUser(null) : setUser({ login: "username" });
   };
-
-  useEffect(()=>{
-    if (user) {
-      setRedirect(true);
-    }
-  }, [user]);
-
-  if (redirect) {
-    navigate('/profile');
-  }
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -51,7 +37,9 @@ export const Main = ({ user, setUser }) => {
           <img className={s.logo} src={Logo} alt="logo" id="logo" />
         </Link>
         {user ? (
-          <Profile setUser={setUser}/>
+          <Link to="/profile">
+            <Profile setUser={setUser} />
+          </Link>
         ) : (
           <button className={s.button} onClick={() => setModalActive(true)}>
             Войти
