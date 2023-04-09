@@ -1,5 +1,4 @@
 @font-face {
-    font-family: 'StratosSkyeng';
-    src: local('StratosSkyeng'), url(../../sky_workout/src/fonts/Stratos-Regular.woff) format('woff');
-
-  }
+  font-family: "StratosSkyeng";
+  src: local("StratosSkyeng"), url(./fonts/Stratos-Regular.woff) format("woff");
+}
