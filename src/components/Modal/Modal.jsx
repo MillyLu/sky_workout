@@ -10,12 +10,14 @@ export const Modal = ({ active, setActive, setSignUp, children }) => {
   return (
     <div
       className={active ? `${s.modal} ${s.active}` : `${s.modal}`}
-      onClick={() => toggle()}>
+      onClick={() => toggle()}
+    >
       <div
         className={
           active ? `${s.modal_content} ${s.active}` : `${s.modal_content}`
         }
-        onClick={(e) => e.stopPropagation()}>
+        onClick={(e) => e.stopPropagation()}
+      >
         {children}
       </div>
     </div>

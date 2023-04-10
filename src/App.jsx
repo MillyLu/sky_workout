@@ -9,7 +9,7 @@ function App() {
   return (
     <React.StrictMode>
       <BrowserRouter>
-        <AppRoutes user={user} setUser={setUser}/>
+        <AppRoutes user={user} setUser={setUser} />
       </BrowserRouter>
     </React.StrictMode>
   );
