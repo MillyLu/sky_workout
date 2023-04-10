@@ -1,87 +1,85 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
 
 @font-face {
-    font-family: 'StratosSkyeng';
-    src: local('StratosSkyeng'), url(../../fonts/Stratos-Regular.woff) format('woff');
-
-  }
-
-  .link{
-    text-decoration: none;
-  }
-
-.card{
-    width: 278px;
-    height: 76px;
-    border: 1px solid black;
-    border-radius: 26px;
-    padding-top: 11px;
-    padding-bottom: 17px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
+  font-family: "StratosSkyeng";
+  src: local("StratosSkyeng"),
+    url(../../fonts/Stratos-Regular.woff) format("woff");
 }
 
-.cardActive{
-    width: 278px;
-    height: 76px;
-    border-radius: 26px;
-    padding-top: 11px;
-    padding-bottom: 17px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    border: 1px solid #06B16E;
-    position: relative;
+.link {
+  text-decoration: none;
 }
 
-.title{
-    font-family: 'StratosSkyeng', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 115%;
-    text-align: center;
-    letter-spacing: -0.05px;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    color: #000000;
-
+.card {
+  width: 278px;
+  height: 76px;
+  border: 1px solid black;
+  border-radius: 26px;
+  padding-top: 11px;
+  padding-bottom: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
 }
 
-.header{
-    width: 278px;
-    padding-left: 44.5px;
-    padding-right: 11px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.cardActive {
+  width: 278px;
+  height: 76px;
+  border-radius: 26px;
+  padding-top: 11px;
+  padding-bottom: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #06b16e;
+  position: relative;
 }
 
-.header:last-child{
-    margin-right: 0px;
+.title {
+  font-family: "StratosSkyeng", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  text-align: center;
+  letter-spacing: -0.05px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #000000;
 }
 
-.titleActive{
-    font-family: 'StratosSkyeng', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 115%;
-    text-align: center;
-    letter-spacing: -0.05px;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    color:#06B16E;
-    width: 188px;
+.header {
+  width: 278px;
+  padding-left: 44.5px;
+  padding-right: 11px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.header:last-child {
+  margin-right: 0px;
+}
+
+.titleActive {
+  font-family: "StratosSkyeng", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  text-align: center;
+  letter-spacing: -0.05px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #06b16e;
+  width: 188px;
 }
 
 /* .titleActive::after {
@@ -93,26 +91,26 @@
     height: 25px;
   } */
 
-.description{
-    font-family: 'StratosSkyeng', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
-    letter-spacing: 0.001em;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    color: #000000;
+.description {
+  font-family: "StratosSkyeng", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.001em;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #000000;
 }
 
-.descriptionActive{
-    font-family: 'StratosSkyeng', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
-    letter-spacing: 0.001em;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    color: #06B16E;
+.descriptionActive {
+  font-family: "StratosSkyeng", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.001em;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #06b16e;
 }

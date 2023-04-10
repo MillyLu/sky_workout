@@ -81,12 +81,12 @@ export const Main = ({ user, setUser }) => {
         <Modal
           active={modalActive}
           setActive={setModalActive}
-          setSignUp={setSignUp}>
+          setSignUp={setSignUp}
+        >
           {signUp ? (
             <SignUp />
           ) : (
             <LogIn
-              signUp={signUp}
               setSignUp={setSignUp}
               user={user}
               toogleLogin={toogleLogin}

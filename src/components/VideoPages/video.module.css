@@ -1,161 +1,159 @@
-
-
 * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  p {
-    font-weight: 400;
-    font-size: 24px;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-  }
-  
-  .lessons {
-    background: #ffffff;
-    padding-left: calc(50% - 580px);
-    padding-right: calc(50% - 580px);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-  
-  .header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 24px;
-  }
-  
-  .button {
-    width: 77px;
-    height: 36px;
-    background: #140d40;
-    border-radius: 46px;
-    color: #ffffff;
-    border: none;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    transition: all 0.3s;
-  }
-  
-  .button:hover {
-    background: #2d1f79;
-    transform: scale(1.03);
-    box-shadow: #03020a 4px 2px 64px;
-  }
-  
-  .title {
-    position: relative;
-    padding-top: 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .yoga {
-    padding-top: 75px;
-    padding-bottom: 40px;
-    color: #000000;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 48px;
-  }
-  
-  .description {
-    width: 840px;
-    color: #000000;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 32px;
-  }
-  
-  .video {
-    padding-top: 40px;
-  }
-  
-  .progress-bar {
-    position: relative;
-    height: 20px;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .progress-bar-fill {
-    position: absolute;
-    height: 100%;
-    background-color: #4caf50;
-    border-radius: inherit;
-    text-align: center;
-    color: #fff;
-    transition: width 0.3s ease-in-out;
-  }
-  
-  .exercises {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .bar {
-    width: 278px;
-    height: 41px;
-    background: #EDECFF;
-    border: 2px solid #565EEF;
-    border-radius: 22px
-  }
-  
-  .about {
-    width: 1160px;
-    display: flex;
-    padding-top: 70px;
-    padding-bottom: 94px;
-    justify-content: space-between;
-  }
-  
-  .progress {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-weight: 400;
+  font-size: 24px;
+  font-feature-settings: "pnum" on, "lnum" on;
+}
+
+.lessons {
+  background: #ffffff;
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+}
+
+.button {
+  width: 77px;
+  height: 36px;
+  background: #140d40;
+  border-radius: 46px;
+  color: #ffffff;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  transition: all 0.3s;
+}
+
+.button:hover {
+  background: #2d1f79;
+  transform: scale(1.03);
+  box-shadow: #03020a 4px 2px 64px;
+}
+
+.title {
+  position: relative;
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.yoga {
+  padding-top: 75px;
+  padding-bottom: 40px;
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+}
+
+.description {
+  width: 840px;
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+}
+
+.video {
+  padding-top: 40px;
+}
+
+.progress-bar {
+  position: relative;
+  height: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.progress-bar-fill {
+  position: absolute;
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: inherit;
+  text-align: center;
+  color: #fff;
+  transition: width 0.3s ease-in-out;
+}
+
+.exercises {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.bar {
+  width: 278px;
+  height: 41px;
+  background: #edecff;
+  border: 2px solid #565eef;
+  border-radius: 22px;
+}
+
+.about {
+  width: 1160px;
+  display: flex;
+  padding-top: 70px;
+  padding-bottom: 94px;
+  justify-content: space-between;
+}
+
+.progress {
   width: 638px;
   left: 662px;
   top: 1030px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #F2F2F2;
+  background: #f2f2f2;
   border-radius: 30px;
   padding: 36px;
-  }
-  
-  .progress_bar {
-    display: flex;
-    gap: 72px;
-    margin: 27px;
-  }
-  
-  .barStyle {
-    background: #565EEF;
-    border-radius: 22px 0px 0px 22px;
-    height: 38px;
-    color: #EDECFF;
-    font-weight: 400;
-    font-size: 24px;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 15px;
-  }
-  
-  .progress_info {
-    width: 227px;
-  }
-  
-  .exercises_button {
-    background: #580EA2;
+}
+
+.progress_bar {
+  display: flex;
+  gap: 72px;
+  margin: 27px;
+}
+
+.barStyle {
+  background: #565eef;
+  border-radius: 22px 0px 0px 22px;
+  height: 38px;
+  color: #edecff;
+  font-weight: 400;
+  font-size: 24px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15px;
+}
+
+.progress_info {
+  width: 227px;
+}
+
+.exercises_button {
+  background: #580ea2;
   border-radius: 46px;
   width: 275px;
   height: 52px;
-  color: #FAFAFA;
+  color: #fafafa;
   font-weight: 400;
   font-size: 18px;
-  }
+}
