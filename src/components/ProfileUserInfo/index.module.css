@@ -62,6 +62,8 @@
 
 .userInfo__button:hover {
   background-color: #3f007d;
+  transform: scale(1.03);
+  box-shadow: #03020a 2px 2px 16px;
 }
 
 .userInfo__button:active {
