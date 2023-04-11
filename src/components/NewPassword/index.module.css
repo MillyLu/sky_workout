@@ -85,6 +85,8 @@
 
 .button:hover {
   background: #3f007d;
+  transform: scale(1.03);
+  box-shadow: #03020a 2px 2px 16px;
 }
 .button:active {
   background: #271a58;

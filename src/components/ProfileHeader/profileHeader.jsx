@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../img/logo.svg";
+import { Profile } from "../Profile/Profile";
 import styles from "./index.module.css";
+
 
 export function Header() {
   return (
@@ -9,17 +11,7 @@ export function Header() {
         <Logo alt="logo" />
       </Link>
       <div className={styles.user}>
-        <div className={styles.userAvatar}></div>
-        <select
-          className={styles.userName}
-          defaultValue={"value1"}
-          name="select"
-        >
-          <option value="value1" className={styles.userName}>
-            Сергей
-          </option>
-          <option value="value2">Выйти</option>
-        </select>
+        <Profile profile={true}/>
       </div>
     </header>
   );
