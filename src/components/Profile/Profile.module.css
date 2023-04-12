@@ -6,7 +6,7 @@
   gap: 4px;
 }
 
-.profileNotMain{
+.profileNotMain {
   display: flex;
   flex-direction: row;
   justify-content: center;
