@@ -1,6 +1,6 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./Slices/userSlice";
-import { userSlice } from "./Slices/userSlice";
+// import { userSlice } from "./Slices/userSlice";
 
 
  export default configureStore({
