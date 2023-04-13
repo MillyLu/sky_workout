@@ -18,6 +18,11 @@ const ProgressBar = ({ progress }) => {
 
 export const Video = ( props ) => {
   const [isProgressClick, setIsProgressClick] = useState(false);
+  const tasks = [
+    'Наклон вперед (10 повторений)',
+    'Наклон назад (10 повторений)',
+    'Поднятие ног, согнутых в коленях (5 повторений)',
+  ];
 
   return (
     
@@ -54,7 +59,7 @@ export const Video = ( props ) => {
             {isProgressClick && (
             <ProgressForm
             onClick={() => setTimeout(() => setIsProgressClick(false), 2000)}
-
+            tasks={tasks }
             />
             )}
           </div>
