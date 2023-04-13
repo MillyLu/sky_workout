@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "StratosSkyeng";
+  src: local("StratosSkyeng"),
+    url(../../fonts/Stratos-Regular.woff) format("woff");
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +40,6 @@ p {
   border-radius: 46px;
   color: #ffffff;
   border: none;
-  font-family: "Roboto", sans-serif;
   font-weight: 400;
   transition: all 0.3s;
 }
@@ -57,7 +63,6 @@ p {
   padding-top: 75px;
   padding-bottom: 40px;
   color: #000000;
-  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 48px;
 }
@@ -65,7 +70,6 @@ p {
 .description {
   width: 840px;
   color: #000000;
-  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 32px;
 }
