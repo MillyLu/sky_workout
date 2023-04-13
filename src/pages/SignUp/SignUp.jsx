@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { setUser } from "../../store/Slices/userSlice";
 
+
+
 export const SignUp = () => {
   const [login, setLogin] = useState("");
   const [mail, setMail] = useState("");
@@ -12,20 +14,28 @@ export const SignUp = () => {
 
   const dispatch = useDispatch();
 
-  const toggleSignUp = (email, password) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        dispatch(
+  const auth = getAuth();
+
+ const toggleSignUp = async() => {
+  try {
+    const userData = await createUserWithEmailAndPassword(auth, mail, pass);
+    console.log(userData);
+    const { accessToken, email, uid } = await userData.user;
+    dispatch(
           setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.accessToken,
+            email: email,
+            id: uid,
+            token: accessToken,
           })
-        );
-      })
-      .catch(console.error);
-  };
+        ); 
+      
+    }
+    catch (error) {
+
+      console.log(error);
+      
+  }; 
+}
   return (
     <div className={s.sign_up}>
       <Logo alt="logo" />
@@ -55,9 +65,9 @@ export const SignUp = () => {
         type="password"
         placeholder="Повторите пароль"
       />
-      <button className={s.button_registration} onClick={() => toggleSignUp()}>
+      <button className={s.button_registration} onClick={toggleSignUp}>
         Зарегистрироваться
       </button>
     </div>
   );
-};
+}
