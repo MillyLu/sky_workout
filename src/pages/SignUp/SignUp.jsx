@@ -5,8 +5,6 @@ import { useDispatch } from "react-redux";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { setUser } from "../../store/Slices/userSlice";
 
-
-
 export const SignUp = () => {
   const [login, setLogin] = useState("");
   const [mail, setMail] = useState("");
@@ -16,26 +14,23 @@ export const SignUp = () => {
 
   const auth = getAuth();
 
- const toggleSignUp = async() => {
-  try {
-    const userData = await createUserWithEmailAndPassword(auth, mail, pass);
-    console.log(userData);
-    const { accessToken, email, uid } = await userData.user;
-    dispatch(
-          setUser({
-            email: email,
-            id: uid,
-            token: accessToken,
-          })
-        ); 
-      
-    }
-    catch (error) {
-
+  const toggleSignUp = async () => {
+    try {
+      const userData = await createUserWithEmailAndPassword(auth, mail, pass);
+      const accessToken = await userData.user.accessToken;
+      const email = await userData.user.email;
+      const uid = await userData.user.uid;
+      dispatch(
+        setUser({
+          email: email,
+          id: uid,
+          token: accessToken,
+        })
+      );
+    } catch (error) {
       console.log(error);
-      
-  }; 
-}
+    }
+  };
   return (
     <div className={s.sign_up}>
       <Logo alt="logo" />
@@ -70,4 +65,4 @@ export const SignUp = () => {
       </button>
     </div>
   );
-}
+};
