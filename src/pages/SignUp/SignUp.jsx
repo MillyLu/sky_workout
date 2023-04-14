@@ -9,12 +9,22 @@ export const SignUp = () => {
   const [login, setLogin] = useState("");
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
+  const [repeatPass, setRepeatPass] = useState("");
+  const [error, setError] = useState("");
+  const [mailError, setMailError] = useState("");
+  const [passError, setPassError] = useState("");
 
   const dispatch = useDispatch();
 
   const auth = getAuth();
 
   const toggleSignUp = async () => {
+    if (pass !== repeatPass) {
+      setError("Ошибка");
+      setPass("");
+      setRepeatPass("");
+      return;
+    }
     try {
       const userData = await createUserWithEmailAndPassword(auth, mail, pass);
       const accessToken = await userData.user.accessToken;
@@ -28,7 +38,20 @@ export const SignUp = () => {
         })
       );
     } catch (error) {
-      console.log(error);
+      setMailError("");
+      setPassError("");
+      const errorCode = error.code;
+
+      if (errorCode === "auth/invalid-email") {
+        setMail("");
+        setMailError("Не правильный e-mail или отсутствует");
+        return;
+      }
+
+      if (errorCode === "weak-password") {
+        setPassError("Минимум 6 символов");
+        return;
+      }
     }
   };
   return (
@@ -41,24 +64,44 @@ export const SignUp = () => {
         placeholder="Логин"
         onChange={(e) => setLogin(e.target.value)}
       />
+
       <input
-        className={`${s.input} ${s.input_login}`}
+        className={
+          mailError
+            ? `${s.input} ${s.input_login} ${s.error}`
+            : `${s.input} ${s.input_login}`
+        }
         type="email"
         value={mail}
-        placeholder="E-mail"
+        placeholder={mailError ? mailError : "E-mail"}
         onChange={(e) => setMail(e.target.value)}
       />
+      {passError ? (
+        setPass("")
+      ) : (
+        <input
+          className={
+            passError
+              ? `${s.input} ${s.input_password} ${s.error}`
+              : `${s.input} ${s.input_password}`
+          }
+          type="password"
+          value={pass}
+          placeholder={passError ? { passError } : "Пароль"}
+          onChange={(e) => setPass(e.target.value)}
+        />
+      )}
+
       <input
-        className={`${s.input} ${s.input_password}`}
+        className={
+          error
+            ? `${s.input} ${s.input_password} ${s.error}`
+            : `${s.input} ${s.input_password}`
+        }
         type="password"
-        value={pass}
-        placeholder="Пароль"
-        onChange={(e) => setPass(e.target.value)}
-      />
-      <input
-        className={`${s.input} ${s.input_password}`}
-        type="password"
-        placeholder="Повторите пароль"
+        value={repeatPass}
+        placeholder={error ? "Пароли не совпадают!" : "Повторите пароль"}
+        onChange={(e) => setRepeatPass(e.target.value)}
       />
       <button className={s.button_registration} onClick={toggleSignUp}>
         Зарегистрироваться

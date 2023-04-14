@@ -14,14 +14,10 @@ import { Profile } from "../../components/Profile/Profile";
 import s from "./Main.module.css";
 import { useState } from "react";
 
-export const Main = ({ user, setUser }) => {
+export const Main = ({ user }) => {
   const [modalActive, setModalActive] = useState(false);
 
   const [signUp, setSignUp] = useState(false);
-
-  const toogleLogin = () => {
-    user ? setUser(null) : setUser({ login: "username" });
-  };
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -38,7 +34,7 @@ export const Main = ({ user, setUser }) => {
         </Link>
         {user ? (
           <Link to="/profile">
-            <Profile setUser={setUser} />
+            <Profile email={user} />
           </Link>
         ) : (
           <button className={s.button} onClick={() => setModalActive(true)}>
@@ -83,15 +79,7 @@ export const Main = ({ user, setUser }) => {
           setActive={setModalActive}
           setSignUp={setSignUp}
         >
-          {signUp ? (
-            <SignUp />
-          ) : (
-            <LogIn
-              setSignUp={setSignUp}
-              user={user}
-              toogleLogin={toogleLogin}
-            />
-          )}
+          {signUp ? <SignUp /> : <LogIn setSignUp={setSignUp} />}
         </Modal>
       )}
     </div>
