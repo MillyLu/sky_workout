@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import { useAuth } from "./Hooks/user-auth";
 import { Bodyflex } from "./pages/Bodyflex/bodyflex";
 import { DanceFitness } from "./pages/DanceFitness/dance_fitness";
 import { StepAerobics } from "./pages/StepAerobics/step_aerobics";
@@ -16,13 +17,14 @@ import { SDay1 } from "./pages/VideoPages/Stretching/sDay1";
 import { BDay1 } from "./pages/VideoPages/Bodyflex/bDay1";
 import { Error } from "./pages/Error/Error";
 
-export const AppRoutes = ({ user, setUser }) => {
+export const AppRoutes = () => {
+  const { isAuth, email } = useAuth();
   return (
     <Routes>
       <Route path="/yoga" element={<Yoga />} />
-      <Route path="/" element={<Main user={user} setUser={setUser} />} />
+      <Route path="/" element={<Main user={email} />} />
       <Route path="/stretching" element={<Stretching />} />
-      <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
+      <Route element={<ProtectedRoute isAllowed={Boolean(isAuth)} />}>
         <Route path="/profile" element={<Profile />} />
         <Route path="/yDay1" element={<YDay1 />} />
         <Route path="/yDay2" element={<YDay2 />} />

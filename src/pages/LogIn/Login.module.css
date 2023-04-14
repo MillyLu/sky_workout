@@ -97,3 +97,11 @@
 .button_registration:active {
   background: #d9d9d9;
 }
+
+.error {
+  border-bottom: 0.5px solid #ff0000;
+}
+
+.error::placeholder {
+  color: #ff0000;
+}

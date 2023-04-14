@@ -8,41 +8,68 @@ import { setUser } from "../../store/Slices/userSlice";
 export const LogIn = ({ setSignUp }) => {
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
+  const [mailError, setMailError] = useState("");
+  const [passError, setPassError] = useState("");
 
   const dispatch = useDispatch();
 
-  const toogleLogin = (email, password) => {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.accessToken,
-          })
-        );
-      })
-      .catch(()=>alert('Такого пользователя не существует'));
+  const auth = getAuth();
+
+  const toogleLogin = async () => {
+    try {
+      const userData = await signInWithEmailAndPassword(auth, mail, pass);
+      const accessToken = await userData.user.accessToken;
+      const email = await userData.user.email;
+      const uid = await userData.user.uid;
+      dispatch(
+        setUser({
+          email: email,
+          id: uid,
+          token: accessToken,
+        })
+      );
+    } catch (error) {
+      setMailError("");
+      setPassError("");
+      const errorCode = error.code;
+
+      if (errorCode === "auth/invalid-email") {
+        setMail("");
+        setMailError("Не правильный e-mail");
+        return;
+      }
+    }
   };
 
   return (
     <div className={s.login}>
       <Logo alt="logo" />
       <input
-        className={`${s.input} ${s.input_login}`}
+        className={
+          mailError
+            ? `${s.input} ${s.input_login} ${s.error}`
+            : `${s.input} ${s.input_login}`
+        }
         type="email"
         value={mail}
-        placeholder="E-mail"
+        placeholder={mailError ? mailError : "E-mail"}
         onChange={(e) => setMail(e.target.value)}
       />
-      <input
-        className={`${s.input} ${s.input_password}`}
-        type="password"
-        value={pass}
-        placeholder="Пароль"
-        onChange={(e) => setPass(e.target.value)}
-      />
+      {passError ? (
+        setPass("")
+      ) : (
+        <input
+          className={
+            passError
+              ? `${s.input} ${s.input_password} ${s.error}`
+              : `${s.input} ${s.input_password}`
+          }
+          type="password"
+          value={pass}
+          placeholder={passError ? { passError } : "Пароль"}
+          onChange={(e) => setPass(e.target.value)}
+        />
+      )}
       <button className={s.button_login} onClick={() => toogleLogin()}>
         Войти
       </button>
