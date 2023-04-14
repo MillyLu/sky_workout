@@ -1,5 +1,5 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
-import { get, child, ref } from "@firebase/database";
+import { get, child, ref, push } from "@firebase/database";
 import db from "../firebase";
 
 
@@ -53,19 +53,27 @@ export const coursesApi = createApi({
           },
         }),
     
-       /* addUser: builder.query({
-        async newUser(newUser) {
+        addUser: builder.mutation({
+        async queryFn(payload) {
             try {
-                const addClient = await db().ref('clients').push(newUser)
-                console.log(addClient)
-            } catch (error) {
+              const userRef = ref(db, 'users/' + payload.uid)
+              const userAdd = await push(userRef, {
+                  username: payload.login,
+                  email: payload.email,
+                //  profile_picture : imageUrl
+               })
+               return{userAdd}; 
+              }
+
+              
+               
+             catch (error) {
                 console.log(error.message)
-                throw error
                 
             }
         }
-          }), */
+          }), 
     }) 
 });
 
-export const { useGetCoursesQuery, useGetWorkoutsQuery, useGetCourseByIdQuery } = coursesApi;
+export const { useGetCoursesQuery, useGetWorkoutsQuery, useGetCourseByIdQuery, useAddUserMutation } = coursesApi;

@@ -1,8 +1,49 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setNewLogin } from "../../store/Slices/userSlice";
+import { getAuth, updateProfile } from "firebase/auth";
 import styles from "./index.module.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../img/logo.svg";
 
 export function NewLogin({ setModalActiveLogin }) {
+
+  const [login, setLogin] = useState('');
+  const [error, setError] = useState('');
+  const dispatch = useDispatch();
+  
+  function updateLogin() {
+
+    const auth = getAuth();
+    updateProfile(auth.currentUser, {
+      displayName: login
+    }).then(() => {
+  
+        dispatch(setNewLogin({ 
+          name: login 
+        }));
+  
+        setModalActiveLogin(false)
+      })
+      .catch ((error) => {
+        setError(error.message);
+      })
+    };
+
+
+
+  function changeLogin(e) {
+    e.preventDefault();
+
+    if(!login) {
+      setError('Введите новый login');
+      return;
+    }
+
+    updateLogin();
+
+  }
+
   return (
     <div className={styles.modal} onClick={() => setModalActiveLogin(false)}>
       <div className={styles.content} onClick={(e) => e.stopPropagation()}>
@@ -18,9 +59,14 @@ export function NewLogin({ setModalActiveLogin }) {
             className={styles.input}
             type="text"
             placeholder="Логин"
+            value={login}
+            onChange={(e) => setLogin(e.target.value)}
           ></input>
+          {(error) && 
+            <p className={styles.error}>{error}</p>
+          }
           <button
-            onClick={() => setModalActiveLogin(false)}
+            onClick={changeLogin}
             className={styles.button}
           >
             Сохранить
