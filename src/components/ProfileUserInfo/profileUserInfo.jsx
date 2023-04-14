@@ -3,12 +3,15 @@ import styles from "./index.module.css";
 import { Icon } from "react-icons-kit";
 import { eye } from "react-icons-kit/feather/eye";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { useAuth } from "../../Hooks/user-auth";
 
 export function ProfileUserInfo({ setActive, setModalActiveLogin }) {
   const [pass] = useState("4fkhdj880d");
   const [hidePass, setHidePass] = useState(true);
   const [showPass, setShowPass] = useState(false);
   const [icon, setIcon] = useState(eyeOff);
+  const user = useAuth();
+  console.log(user);
 
   function handleChange() {
     if (hidePass) {
