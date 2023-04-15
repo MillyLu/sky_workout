@@ -10,3 +10,5 @@ export function useAuth() {
     id,
   };
 }
+
+export const getUserId = (state) => state.user.id;
