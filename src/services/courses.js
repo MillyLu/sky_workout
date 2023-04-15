@@ -6,7 +6,7 @@ import db from "../firebase";
 export const coursesApi = createApi({
     reducerPath: "courses",
     baseQuery: fakeBaseQuery(),
-    // tagTypes: [""],
+    tagTypes: ['Courses'],
 
     endpoints: (builder) => ({
         getCourses: builder.query({
@@ -22,7 +22,7 @@ export const coursesApi = createApi({
               return { error: e };
             }
           },
-        //  providesTags: ['Courses']
+         providesTags: ['Courses']
         }),
 
         getCourseById: builder.query({

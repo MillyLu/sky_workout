@@ -1,26 +1,27 @@
 import { Course } from "../../components/CourseType/CourseType.jsx";
 import s from "../../components/CourseType/CourseType.module.css";
+import { useGetCourseByIdQuery } from "../../services/courses.js";
 
 export const Yoga = () => {
+  const id = 'ab1c3f';
+  const { data = [] } = useGetCourseByIdQuery(id);
+
   return (
     <Course
       fon={`${s.skill_card_yoga}`}
-      name={"Йога"}
+      name={data.name}
       url={"https://www.youtube.com/embed/oqe98Dxivns"}
-      cause1={"Давно хотели попробовать йогу, но не решались начать."}
-      cause2={
-        "Хотите укрепить позвоночник, избавиться от болей в спине и суставах."
-      }
-      cause3={"Ищете активность, полезную для тела и души."}
-      directions1={"• Йога для новичков"}
-      directions2={"• Классическая йога"}
-      directions3={"• Йогатерапия"}
-      directions4={"• Кундалини-йога"}
-      directions5={"• Хатха-йога"}
-      directions6={"• Аштанга-йога"}
-      text={
-        "Благодаря комплексному воздействию упражнений происходит проработка всех групп мышц, тренировка суставов, улучшается циркуляция крови. Кроме того, упражнения дарят отличное настроение, заряжают бодростью и помогают противостоять стрессам."
-      }
+      cause1={data.cause?.[0]}
+      cause2={data.cause?.[1]}
+      cause3={data.cause?.[2]}
+      directions1={`• ${data.directions?.[0]}`}
+      directions2={`• ${data.directions?.[1]}`}
+      directions3={`• ${data.directions?.[2]}`}
+      directions4={`• ${data.directions?.[3]}`}
+      directions5={`• ${data.directions?.[4]}`}
+      directions6={`• ${data.directions?.[5]}`}
+      definition={data.definition}
+      description={data.description}
     />
   );
 };
