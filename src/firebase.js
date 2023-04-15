@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
 
-
+// try use local variables
 const firebaseConfig = {
   apiKey: "AIzaSyBBTjd9wjQLOFLKg4-FtvF76N-9pVPb2tA",
   authDomain: "skypro-workout.firebaseapp.com",
