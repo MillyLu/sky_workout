@@ -58,6 +58,7 @@
   border-radius: 46px;
   border: #580ea2;
   text-align: center;
+  transition: all 0.3s;
 }
 
 .userInfo__button:hover {
