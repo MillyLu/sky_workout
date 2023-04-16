@@ -1,6 +1,8 @@
 import s from "./video.module.css";
 import ReactPlayer from "react-player/youtube";
 import { Header } from "../../components/ProfileHeader/profileHeader";
+import { useState } from "react";
+import { ProgressForm } from "../../components/progressForm/ProgressForm"
 
 const ProgressBar = ({ progress }) => {
   return (
@@ -12,8 +14,18 @@ const ProgressBar = ({ progress }) => {
   );
 };
 
-export const Video = (props) => {
+
+
+export const Video = ( props ) => {
+  const [isProgressClick, setIsProgressClick] = useState(false);
+  const tasks = [
+    'Наклон вперед (10 повторений)',
+    'Наклон назад (10 повторений)',
+    'Поднятие ног, согнутых в коленях (5 повторений)',
+  ];
+
   return (
+    
     <div className={s.lessons}>
       <Header />
       <div className={s.title}>
@@ -21,6 +33,7 @@ export const Video = (props) => {
           <p className={s.yoga}>{props.name}</p>
           <p className={s.description}>{props.description}</p>
         </div>
+ 
         <div>
           <div className={s.video}>
             <ReactPlayer
@@ -40,9 +53,15 @@ export const Video = (props) => {
             {props.exercises4 ? <p>{props.exercises4}</p> : null}
             {props.exercises5 ? <p>{props.exercises5}</p> : null}
 
-            <button className={s.exercises_button}>
+            <button className={s.exercises_button} onClick={() => setIsProgressClick(true)}>
               Заполнить свой прогресс
             </button>
+            {isProgressClick && (
+            <ProgressForm
+            onClick={() => setTimeout(() => setIsProgressClick(false), 2000)}
+            tasks={tasks }
+            />
+            )}
           </div>
           <div className={s.progress}>
             <h2>Мой прогресс по тренировке {props.day}:</h2>

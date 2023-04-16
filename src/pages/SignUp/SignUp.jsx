@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { setUser } from "../../store/Slices/userSlice";
+import { useAddUserMutation } from "../../services/courses";
+
 
 export const SignUp = ({setActive}) => {
   const [login, setLogin] = useState("");
@@ -15,6 +17,8 @@ export const SignUp = ({setActive}) => {
   const [passError, setPassError] = useState("");
 
   const dispatch = useDispatch();
+  const [addUser] = useAddUserMutation();
+
 
   const auth = getAuth();
 
@@ -37,6 +41,10 @@ export const SignUp = ({setActive}) => {
           token: accessToken,
         })
       );
+      addUser({
+        id: uid,
+        username: login
+      })
       setActive(false);
     } catch (error) {
       setMailError("");
