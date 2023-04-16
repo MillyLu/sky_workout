@@ -3,7 +3,7 @@ import ProfilePhoto from "./img/img.jpg";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../../store/Slices/userSlice";
 
-export const Profile = ({ profile, email }) => {
+export const Profile = ({ profile, user }) => {
   const dispatch = useDispatch();
 
   const toggleLogOut = () => {
@@ -12,7 +12,7 @@ export const Profile = ({ profile, email }) => {
   return (
     <div className={profile ? s.profileNotMain : s.profile}>
       <img className={s.photo} src={ProfilePhoto} alt="profile_photo" />
-      <p className={profile ? s.nameNotMain : s.name}>{email}</p>
+      <p className={profile ? s.nameNotMain : s.name}>{user}</p>
       <button
         className={profile ? s.buttonNotMain : s.button}
         onClick={toggleLogOut}

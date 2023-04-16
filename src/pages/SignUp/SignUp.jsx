@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { setUser } from "../../store/Slices/userSlice";
 
-export const SignUp = () => {
+export const SignUp = ({setActive}) => {
   const [login, setLogin] = useState("");
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
@@ -37,6 +37,7 @@ export const SignUp = () => {
           token: accessToken,
         })
       );
+      setActive(false);
     } catch (error) {
       setMailError("");
       setPassError("");
