@@ -1,10 +1,24 @@
 import s from "./Profile.module.css";
 import ProfilePhoto from "./img/img.jpg";
 import { useDispatch } from "react-redux";
+import axios from "axios";
+import { useAuth } from "../../Hooks/user-auth";
 import { removeUser } from "../../store/Slices/userSlice";
+import { useState } from "react";
 
-export const Profile = ({ profile, user }) => {
+export const Profile = ({ profile }) => {
   const dispatch = useDispatch();
+  const [user, setUser] = useState('');
+
+  const { id } = useAuth();
+  axios
+    .get(
+      `https://skypro-workout-default-rtdb.europe-west1.firebasedatabase.app/users/${id}/.json`
+    )
+    .then((response) => {
+      const data = response.data;
+      setUser(data.username);
+    })
 
   const toggleLogOut = () => {
     dispatch(removeUser());
