@@ -38,6 +38,19 @@ export const coursesApi = createApi({
           }
         }),
 
+        getAllWorkoutsInCourse: builder.query({
+          async queryFn(id) {
+            try {
+              const dbRef = ref(db);
+              const workouts = await get(child(dbRef, `courses/${id}/workouts`));
+              return { data: workouts.val() };
+            } catch (e) {
+              console.log(e);
+              return { error: e };
+            }
+          }
+        }),
+
         getWorkouts: builder.query({
           async queryFn() {
             try {
@@ -149,4 +162,4 @@ export const coursesApi = createApi({
     }) 
 });
 
-export const { useGetCoursesQuery, useGetWorkoutsQuery, useGetCourseByIdQuery, useGetWorkoutByIdQuery, useGetExerciseByIdQuery, useAddUserMutation, useAddCourseToUserMutation, useGetUserCoursesQuery, useGetloginByIdQuery } = coursesApi;
+export const { useGetCoursesQuery, useGetWorkoutsQuery, useGetCourseByIdQuery, useGetWorkoutByIdQuery, useGetExerciseByIdQuery, useAddUserMutation, useAddCourseToUserMutation, useGetUserCoursesQuery, useGetloginByIdQuery, useGetAllWorkoutsInCourseQuery } = coursesApi;

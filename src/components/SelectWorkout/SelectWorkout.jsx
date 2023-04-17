@@ -1,13 +1,21 @@
 import styles from "./index.module.css";
 import { Workout } from "../Workout/Workout";
-import { useGetWorkoutByIdQuery } from "../../services/courses";
+import { useGetWorkoutsQuery, useGetAllWorkoutsInCourseQuery } from "../../services/courses";
 
 // import { Link } from "react-router-dom";
 
 export function SelectWorkout({ setModalActiveWorkout, workout}) {
 
-  const { data} =  useGetWorkoutByIdQuery(workout);
+  const { data:  courseWorkouts } =  useGetAllWorkoutsInCourseQuery(workout);
+  console.log(courseWorkouts);
+
+  const { data } = useGetWorkoutsQuery('', {
+    selectFromResult: ({ data }) => ({
+      data: data?.filter((workout) => courseWorkouts?.includes(workout._id))
+    })
+  });
   console.log(data);
+
 
 
   const training = [
@@ -72,6 +80,16 @@ export function SelectWorkout({ setModalActiveWorkout, workout}) {
       <div className={styles.content} onClick={(e) => e.stopPropagation()}>
         <h3 className={styles.header}>Выберите тренировку</h3>
         <div className={styles.list}>
+          {
+            (data) && data.map((item) => (
+              <Workout
+                key={item.id}
+                title={item.name}
+                description={item.description}
+                path={'/workout/'+item._id}
+              />
+            ))
+          }
 
           {workout === "Yoga" &&
             training.map((item) => (

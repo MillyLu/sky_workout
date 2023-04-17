@@ -25,8 +25,7 @@ export const AppRoutes = () => {
       <Route path="/yoga" element={<Yoga />} />
       <Route path="/" element={<Main user={email} />} />
       <Route path="/stretching" element={<Stretching />} />
-      {/* <Route element={<ProtectedRoute isAllowed={Boolean(isAuth)} />}> */}
-      <Route element={<ProtectedRoute isAllowed={true} />}>
+       <Route element={<ProtectedRoute isAllowed={Boolean(isAuth)} />}>
         <Route path="/profile" element={<Profile />} />
         <Route path="/yDay1" element={<YDay1 />} />
         <Route path="/yDay2" element={<YDay2 />} />
@@ -36,6 +35,7 @@ export const AppRoutes = () => {
         <Route path="/sDay5" element={<SDay1 />} />
         <Route path="/bDay1" element={<BDay1 />} />
         <Route path="/workout" element={<Workout />} />
+        <Route path="/workout/:id" element={<Workout />} />
       </Route>
       <Route path="/dance_fitness" element={<DanceFitness />} />
       <Route path="/step_aerobics" element={<StepAerobics />} />
