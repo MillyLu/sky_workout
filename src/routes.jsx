@@ -16,6 +16,7 @@ import { YDay5 } from "./pages/VideoPages/Yoga/yDay5";
 import { SDay1 } from "./pages/VideoPages/Stretching/sDay1";
 import { BDay1 } from "./pages/VideoPages/Bodyflex/bDay1";
 import { Error } from "./pages/Error/Error";
+import Workout from "./pages/Workout";
 
 export const AppRoutes = () => {
   const { isAuth, email } = useAuth();
@@ -24,7 +25,8 @@ export const AppRoutes = () => {
       <Route path="/yoga" element={<Yoga />} />
       <Route path="/" element={<Main user={email} />} />
       <Route path="/stretching" element={<Stretching />} />
-      <Route element={<ProtectedRoute isAllowed={Boolean(isAuth)} />}>
+      {/* <Route element={<ProtectedRoute isAllowed={Boolean(isAuth)} />}> */}
+      <Route element={<ProtectedRoute isAllowed={true} />}>
         <Route path="/profile" element={<Profile />} />
         <Route path="/yDay1" element={<YDay1 />} />
         <Route path="/yDay2" element={<YDay2 />} />
@@ -33,11 +35,14 @@ export const AppRoutes = () => {
         <Route path="/yDay5" element={<YDay5 />} />
         <Route path="/sDay5" element={<SDay1 />} />
         <Route path="/bDay1" element={<BDay1 />} />
+        <Route path="/workout" element={<Workout />} />
       </Route>
       <Route path="/dance_fitness" element={<DanceFitness />} />
       <Route path="/step_aerobics" element={<StepAerobics />} />
       <Route path="/bodyflex" element={<Bodyflex />} />
       <Route path="*" element={<Error />} />
+
+    
     </Routes>
   );
 };
