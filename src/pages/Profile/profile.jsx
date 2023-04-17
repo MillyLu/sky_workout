@@ -20,6 +20,9 @@ export function Profile() {
 
   const { data: userCoursesIds } = useGetUserCoursesQuery(userId);
 
+  const { data:allCour } = useGetCoursesQuery();
+  console.log(allCour);
+
   const { data } = useGetCoursesQuery('', {
     selectFromResult: ({ data }) => ({
       data: data?.filter((course) => userCoursesIds?.includes(course._id))

@@ -3,7 +3,7 @@ import styles from "./index.module.css";
 import { ReactComponent as Done } from "./done.svg";
 import { Link } from "react-router-dom";
 
-export function Workout({ title, description, day, path }) {
+export function Workout({ title, description, path }) {
   const [active] = useState(true); /// true - если тренировка выполнена
 
   return (
@@ -14,9 +14,9 @@ export function Workout({ title, description, day, path }) {
           {active && <Done className={styles.done} />}
         </div>
 
-        {description && day && (
+        {description  && (
           <p className={active ? styles.descriptionActive : styles.description}>
-            {description} / {day}
+            {description} 
           </p>
         )}
       </div>

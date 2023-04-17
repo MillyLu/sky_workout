@@ -28,9 +28,9 @@ export function ProfileCourses({  data }) {
     setModalActiveWorkout(true);
   };
 
-  const onClick = (id) => {
-    setWorkout(id);
-    console.log(id);
+  const onClick = (e) => {
+    setWorkout(e.target.value);
+    console.log(workout);
     setModalActiveWorkout(true);
 
   }
@@ -49,7 +49,7 @@ export function ProfileCourses({  data }) {
               key={item._id}
               name={item.name}
               img={Yoga}
-              button={<Button name={item._id} function={() => onClick(item._id)} button={"Перейти →"} />}
+              button={<Button value={item._id} function={onClick} button={"Перейти →"} />}
               />
               </div>
             )

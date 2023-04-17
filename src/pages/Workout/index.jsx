@@ -7,10 +7,18 @@ import classes from './index.module.css'
 import ProgressModal from '../../components/ProgressModal/index'
 import SuccessModal from '../../components/SuccessModal/index'
 import Modal from '../../components/ProgressModal/Modal/index'
+import { useParams } from 'react-router';
+import { useGetWorkoutByIdQuery } from '../../services/courses';
 
 const Workout = () => {
   const [isProgressModalShown, setIsProgressModalShown] = useState(false)
   const [isSuccessModalShown, setIsSuccessModalShown] = useState(false)
+
+  const id = useParams();
+  console.log(id);
+
+  const {data} = useGetWorkoutByIdQuery(id.id);
+  console.log(data);
 
   const openCloseProgressModal = () => {
     setIsProgressModalShown(!isProgressModalShown)
