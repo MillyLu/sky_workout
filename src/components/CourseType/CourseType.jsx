@@ -5,8 +5,19 @@ import { ReactComponent as One } from "../../img/1.svg";
 import { ReactComponent as Two } from "../../img/2.svg";
 import { ReactComponent as Three } from "../../img/3.svg";
 import { ReactComponent as Phone } from "../../img/phone.svg";
+import { useAddCourseToUserMutation } from "../../services/courses";
 
 export const Course = (props) => {
+
+  const [addCourse] = useAddCourseToUserMutation();
+
+  function onHandleClick() {
+    addCourse({
+      id: 'oWncN7j2nhNQafKqe2ylTigwXfH3',
+      courseId: 'ab5c7n'
+    })
+  }
+
   return (
     <div className={s.course_description}>
       <Link to="/" className={s.logo}>
@@ -60,7 +71,7 @@ export const Course = (props) => {
             выбором направления и тренера, с которым тренировки принесут
             здоровье и радость!
           </p>
-          <button className={s.application_button}>
+          <button onClick={onHandleClick} className={s.application_button}>
             Записаться на тренировку
           </button>
         </div>

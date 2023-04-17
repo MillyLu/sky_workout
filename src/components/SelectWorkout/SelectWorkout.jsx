@@ -1,9 +1,15 @@
 import styles from "./index.module.css";
 import { Workout } from "../Workout/Workout";
+import { useGetWorkoutByIdQuery } from "../../services/courses";
 
 // import { Link } from "react-router-dom";
 
-export function SelectWorkout({ setModalActiveWorkout, workout }) {
+export function SelectWorkout({ setModalActiveWorkout, workout}) {
+
+  const { data} =  useGetWorkoutByIdQuery(workout);
+  console.log(data);
+
+
   const training = [
     {
       id: 1,
@@ -66,6 +72,7 @@ export function SelectWorkout({ setModalActiveWorkout, workout }) {
       <div className={styles.content} onClick={(e) => e.stopPropagation()}>
         <h3 className={styles.header}>Выберите тренировку</h3>
         <div className={styles.list}>
+
           {workout === "Yoga" &&
             training.map((item) => (
               <Workout
