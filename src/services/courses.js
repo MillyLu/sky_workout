@@ -66,6 +66,19 @@ export const coursesApi = createApi({
           }
         }),
 
+        getloginById: builder.query({
+          async queryFn(id) {
+            try {
+              const dbRef = ref(db);
+              const login = await get(child(dbRef, `users/${id}/username`));
+              return { data: login.val() };
+            } catch (e) {
+              console.log(e);
+              return { error: e };
+            }
+          }
+        }),
+
         getExerciseById: builder.query({
           async queryFn(id) {
             try {
@@ -94,6 +107,19 @@ export const coursesApi = createApi({
         }
           }), 
 
+          getUserCourses: builder.query({
+            async queryFn(id) {
+              try {
+                const dbRef = ref(db);
+                const userCourses = await get(child(dbRef, `users/${id}/courses`));
+                return { data: userCourses.val() };
+              } catch (e) {
+                console.log(e);
+                return { error: e };
+              }
+            }
+          }),
+
           addCourseToUser: builder.mutation({
             async queryFn(payload) {
               try {
@@ -108,8 +134,9 @@ export const coursesApi = createApi({
                 } else {
                   if(Object.values(userCourses).includes(payload.courseId)) 
                    {return} else {
+                    userCourses.push(payload.courseId);
                     await update(ref(db, 'users/' + payload.id), {
-                    courses: [payload.courseId]
+                      courses: userCourses
                 })
                 }
               }
@@ -122,4 +149,4 @@ export const coursesApi = createApi({
     }) 
 });
 
-export const { useGetCoursesQuery, useGetWorkoutsQuery, useGetCourseByIdQuery, useGetWorkoutByIdQuery, useGetExerciseByIdQuery, useAddUserMutation, useAddCourseToUserMutation } = coursesApi;
+export const { useGetCoursesQuery, useGetWorkoutsQuery, useGetCourseByIdQuery, useGetWorkoutByIdQuery, useGetExerciseByIdQuery, useAddUserMutation, useAddCourseToUserMutation, useGetUserCoursesQuery, useGetloginByIdQuery } = coursesApi;

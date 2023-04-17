@@ -1,11 +1,18 @@
+import { useState } from "react";
 import styles from "./index.module.css";
 import Yoga from "./joga.png";
+import Йога from "./Йога.png";
 import Stretching from "./stretching.png";
 import Bodyflex from "./bodyflex1.png";
 import { WorkoutItem } from "../WorkoutItem/WorkoutItem";
 import { Button } from "../WorkoutItem/Button";
+import { SelectWorkout } from "../../components/SelectWorkout/SelectWorkout";
 
-export function ProfileCourses({ setModalActiveWorkout, setWorkout }) {
+
+export function ProfileCourses({  data }) {
+
+  const [modalActiveWorkout, setModalActiveWorkout] = useState(false);
+  const [workout, setWorkout] = useState("");
   const YogaOnClick = () => {
     setWorkout("Yoga");
     setModalActiveWorkout(true);
@@ -21,10 +28,34 @@ export function ProfileCourses({ setModalActiveWorkout, setWorkout }) {
     setModalActiveWorkout(true);
   };
 
+  const onClick = (id) => {
+    setWorkout(id);
+    console.log(id);
+    setModalActiveWorkout(true);
+
+  }
+
+  
+
   return (
     <div className={styles.courses}>
       <h2 className={styles.courses__title}>Мои курсы</h2>
       <div className={styles.courses__content}>
+       
+          {
+            (data && data.map((item) => (
+              <div className={styles.courses__card}>
+              <WorkoutItem 
+              key={item._id}
+              name={item.name}
+              img={Yoga}
+              button={<Button name={item._id} function={() => onClick(item._id)} button={"Перейти →"} />}
+              />
+              </div>
+            )
+            ))
+          }
+
         <div className={styles.courses__card}>
           <WorkoutItem
             name={"Йога"}
@@ -49,6 +80,13 @@ export function ProfileCourses({ setModalActiveWorkout, setWorkout }) {
           />
         </div>
       </div>
+      {modalActiveWorkout && (
+        <SelectWorkout
+          data ={data}
+          setModalActiveWorkout={setModalActiveWorkout}
+          workout={workout}
+        />
+      )}
     </div>
   );
 }

@@ -24,7 +24,7 @@ export const AppRoutes = () => {
       <Route path="/yoga" element={<Yoga />} />
       <Route path="/" element={<Main user={email} />} />
       <Route path="/stretching" element={<Stretching />} />
-      <Route element={<ProtectedRoute isAllowed={Boolean(isAuth)} />}>
+      <Route element={<ProtectedRoute isAllowed={true} />}>
         <Route path="/profile" element={<Profile />} />
         <Route path="/yDay1" element={<YDay1 />} />
         <Route path="/yDay2" element={<YDay2 />} />
