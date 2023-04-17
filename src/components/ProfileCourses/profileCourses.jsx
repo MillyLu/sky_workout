@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./index.module.css";
 import Yoga from "./joga.png";
-import Йога from "./Йога.png";
+// import Йога from "./Йога.png";
 import Stretching from "./stretching.png";
 import Bodyflex from "./bodyflex1.png";
 import { WorkoutItem } from "../WorkoutItem/WorkoutItem";
