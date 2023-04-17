@@ -1,7 +1,7 @@
 import s from "./Profile.module.css";
 import ProfilePhoto from "./img/img.jpg";
 
-=======
+
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
