@@ -34,7 +34,7 @@ export const Main = ({ user }) => {
         </Link>
         {user ? (
           <Link to="/profile">
-            <Profile email={user} />
+            <Profile user={user} />
           </Link>
         ) : (
           <button className={s.button} onClick={() => setModalActive(true)}>
@@ -77,9 +77,12 @@ export const Main = ({ user }) => {
         <Modal
           active={modalActive}
           setActive={setModalActive}
-          setSignUp={setSignUp}
-        >
-          {signUp ? <SignUp /> : <LogIn setSignUp={setSignUp} />}
+          setSignUp={setSignUp}>
+          {signUp ? (
+            <SignUp setActive={setModalActive} />
+          ) : (
+            <LogIn setSignUp={setSignUp} setActive={setModalActive} />
+          )}
         </Modal>
       )}
     </div>

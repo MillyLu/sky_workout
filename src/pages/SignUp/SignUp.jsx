@@ -7,7 +7,7 @@ import { setUser } from "../../store/Slices/userSlice";
 import { useAddUserMutation } from "../../services/courses";
 
 
-export const SignUp = () => {
+export const SignUp = ({setActive}) => {
   const [login, setLogin] = useState("");
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
@@ -41,11 +41,11 @@ export const SignUp = () => {
           token: accessToken,
         })
       );
-
       addUser({
         id: uid,
         username: login
       })
+      setActive(false);
     } catch (error) {
       setMailError("");
       setPassError("");
