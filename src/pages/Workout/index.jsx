@@ -15,10 +15,9 @@ const Workout = () => {
   const [isSuccessModalShown, setIsSuccessModalShown] = useState(false)
 
   const id = useParams();
-  console.log(id);
 
   const {data} = useGetWorkoutByIdQuery(id.id);
-  console.log(data);
+  
 
   const openCloseProgressModal = () => {
     setIsProgressModalShown(!isProgressModalShown)
@@ -37,29 +36,31 @@ const Workout = () => {
           <Header />
       </header>
       <main className={classes.main}>
-        <h1 className={classes.heading}>Йога</h1>
+        <h1 className={classes.heading}>{data?.course}</h1>
         <h2 className={classes.title}>
-          Красота и здоровье / Йога на каждый день / 2 день
+          {data?.description}
         </h2>
         <div className={classes.player}>
           <ReactPlayer
-            url={'https://youtu.be/v-xTLFDhoD0'}
+            url={data?.link}
             width="100%"
             height="100%"
           />
         </div>
-        <div className={classes.exercises}>
-          <Exercises onClick={handleClick}/>
-          <Progress />
-        </div>
+        
+          <div className={classes.exercises}>
+            <Exercises data={data} onClick={handleClick} />
+            <Progress data={data} />
+          </div>
+        
       </main>
       {isProgressModalShown && (
         <Modal onClick={openCloseProgressModal}>
-          <ProgressModal onClick={handleSendClick} />
+          <ProgressModal  data={data} onClick={handleSendClick}  />
         </Modal>
       )}
       {isSuccessModalShown && (
-        <SuccessModal setIsSuccessModalShown={setIsSuccessModalShown} />
+        <SuccessModal  setIsSuccessModalShown={setIsSuccessModalShown} />
       )}
     </div>
   )
