@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styles from "./index.module.css";
 import Yoga from "./joga.png";
-// import Йога from "./Йога.png";
-import Stretching from "./stretching.png";
+import Stretching from './stretching.png'
+import Dance from "./dance.png";
+import Step from './step.png';
 import Bodyflex from "./bodyflex1.png";
 import { WorkoutItem } from "../WorkoutItem/WorkoutItem";
 import { Button } from "../WorkoutItem/Button";
@@ -48,7 +49,7 @@ export function ProfileCourses({  data }) {
               <WorkoutItem 
               key={item._id}
               name={item.name}
-              img={Yoga}
+              img={(item.name === "Йога"? Yoga : item.name === "Бодифлекс" ? Bodyflex : item.name === "Стретчинг" ? Stretching : item.name === "Танцевальный фитнес" ? Dance : Step)}
               button={<Button value={item._id} function={onClick} button={"Перейти →"} />}
               />
               </div>

@@ -1,21 +1,24 @@
 import { Course } from "../../components/CourseType/CourseType.jsx";
 import s from "../../components/CourseType/CourseType.module.css";
+import { useGetCourseByIdQuery } from "../../services/courses.js";
 
 export const Stretching = () => {
+  const id = 'ab2c4k';
+  const { data = [] } = useGetCourseByIdQuery(id);
+
   return (
     <Course
       fon={`${s.skill_card_stretching}`}
-      name={"Стретчинг"}
-      cause1={"Хотите подтянуть тело, смоделировать мышечный корсет."}
-      cause2={"Улучшить осанку и координацию."}
-      cause3={"Улучшить кровообращение и обмен веществ."}
-      directions1={"• статический"}
-      directions2={"• динамический"}
-      directions4={"• пассивный"}
-      directions5={"• активный"}
-      text={
-        "Стретчинг в домашних условиях выступает в качестве гимнастики в период восстановления после травм, входит в состав программы для похудения, помогает развить гибкость и пластичность, при правильном подходе вы сядете на шпагат через несколько недель. Это эффективный способ расслабиться после трудного дня."
-      }
+      name={data.name}
+      cause1={data.cause?.[0]}
+      cause2={data.cause?.[1]}
+      cause3={data.cause?.[2]}
+      directions1={`• ${data.directions?.[0]}`}
+      directions2={`• ${data.directions?.[1]}`}
+      directions4={`• ${data.directions?.[2]}`}
+      directions5={`• ${data.directions?.[3]}`}
+      definition={data.definition}
+      description={data.description}
     />
   );
 };

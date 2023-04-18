@@ -1,22 +1,23 @@
 import { Course } from "../../components/CourseType/CourseType.jsx";
 import s from "../../components/CourseType/CourseType.module.css";
+import { useGetCourseByIdQuery } from "../../services/courses.js";
 
 export const DanceFitness = () => {
+  const id = 'ab4c6m';
+  const { data = [] } = useGetCourseByIdQuery(id);
+
   return (
     <Course
       fon={`${s.skill_card_dancefitness}`}
-      name={"Танцевальный фитнесс"}
-      cause1={
-        "Хотите укрепить мышцы, но тренировки в тренажерном зале для вас скучные и однообразные."
-      }
-      cause2={"Хотите сбросить лишний вес, но нет желания мучать себя диетами."}
-      cause3={"Любите танцы и хотите совместить приятное с полезным."}
-      directions1={"• Зумба"}
-      directions2={"• Dance-mix"}
-      directions3={"• Caribbean-mix"}
-      text={
-        "Фитнес и танцы – что между ними общего? А то, что они могут великолепно сочетаться и оказывать просто восхитительный эффект на ваше тело! Объединение хореографии и аэробики – это необычно и интересно, именно так родился танцевальный фитнес, которым вы теперь можете заниматься дома. Достичь отличной формы и при этом получить удовольствие вам поможет видео для похудения, которое мы представляем на этой странице – делайте упражнения, танцуйте и чувствуйте, как ваше тело меняется в лучшую сторону!"
-      }
+      name={data.name}
+      cause1={data.cause?.[0]}
+      cause2={data.cause?.[1]}
+      cause3={data.cause?.[2]}
+      directions1={`• ${data.directions?.[0]}`}
+      directions2={`• ${data.directions?.[1]}`}
+      directions3={`• ${data.directions?.[2]}`}
+      definition={data.definition}
+      description={data.description}
     />
   );
 };

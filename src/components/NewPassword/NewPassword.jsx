@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../img/logo.svg";
 
 
-export function NewPassword({ setActive }) {
+export function NewPassword({ setActive, setNPass }) {
 
   const [password, setPassword] = useState('');
   const [repeatPass, setRepeatPass] = useState('');
@@ -26,9 +26,10 @@ export function NewPassword({ setActive }) {
 
         dispatch(
           setNewPass({
-            password: newPassword
+            password: password
           })
         )
+        setNPass(password);
         setActive(false)
         
       }).catch((error) => {
