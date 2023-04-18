@@ -15,6 +15,8 @@ export function Profile() {
   const [modalActiveLogin, setModalActiveLogin] = useState(false);
 //  const [modalActiveWorkout, setModalActiveWorkout] = useState(false);
 //  const [workout, setWorkout] = useState("");
+const [nLogin, setNLogin] = useState('');
+const [nPass, setNPass] = useState('');
 
   const userId = useSelector(getUserId);
 
@@ -36,14 +38,16 @@ export function Profile() {
       <ProfileUserInfo
         setActive={setModalActivePass}
         setModalActiveLogin={setModalActiveLogin}
+        nLogin={nLogin}
+        nPass={nPass}
       />
       <ProfileCourses
 
         data={data}
       />
-      {modalActivePass && <NewPassword setActive={setModalActivePass} />}
+      {modalActivePass && <NewPassword setActive={setModalActivePass}  setNPass={setNPass}/>}
       {modalActiveLogin && (
-        <NewLogin setModalActiveLogin={setModalActiveLogin} />
+        <NewLogin setModalActiveLogin={setModalActiveLogin} setNLogin={setNLogin} />
       )}
     
     </div>

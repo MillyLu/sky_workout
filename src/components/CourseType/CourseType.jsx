@@ -1,5 +1,5 @@
 import s from "./CourseType.module.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../img/logo.svg";
 import { ReactComponent as One } from "../../img/1.svg";
 import { ReactComponent as Two } from "../../img/2.svg";
@@ -24,9 +24,9 @@ export const Course = (props) => {
         <Logo alt="лого" />
       </Link>
       <div className={props.fon}>
-        <NavLink to="/" className={s.skill_card_name} url={props.fon}>
+        <h1 to="/" className={s.skill_card_name} url={props.fon}>
           {props.name}
-        </NavLink>
+        </h1>
       </div>
 
       <div>
@@ -63,7 +63,7 @@ export const Course = (props) => {
           </div>
         </div>
       </div>
-      <p className={s.description}>{props.text}</p>
+      <p className={s.description}>{props.definition}<br/>{props.description}</p>
       <div className={s.application}>
         <div className={s.application_top}>
           <p className={s.application_text}>
