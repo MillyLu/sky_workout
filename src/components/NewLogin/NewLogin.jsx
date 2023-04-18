@@ -1,16 +1,20 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setNewLogin } from "../../store/Slices/userSlice";
 import { getAuth, updateProfile } from "firebase/auth";
+import { useUpdateUserLoginMutation } from "../../services/courses";
+import { getUserId } from "../../Hooks/user-auth";
 import styles from "./index.module.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../img/logo.svg";
 
-export function NewLogin({ setModalActiveLogin }) {
+export function NewLogin({ setModalActiveLogin, setNLogin }) {
 
   const [login, setLogin] = useState('');
   const [error, setError] = useState('');
   const dispatch = useDispatch();
+  const userId = useSelector(getUserId);
+  const[updateLoginDB] = useUpdateUserLoginMutation();
   
   function updateLogin() {
 
@@ -20,8 +24,15 @@ export function NewLogin({ setModalActiveLogin }) {
     }).then(() => {
   
         dispatch(setNewLogin({ 
-          name: login 
+          login: login 
         }));
+
+        updateLoginDB({
+          id: userId,
+          username: login
+        })
+
+        setNLogin(login);
   
         setModalActiveLogin(false)
       })
