@@ -39,6 +39,8 @@ export const SignUp = ({setActive}) => {
           email: email,
           id: uid,
           token: accessToken,
+          password: pass,
+          login: login
         })
       );
       addUser({

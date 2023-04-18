@@ -26,6 +26,7 @@ export const LogIn = ({ setSignUp, setActive }) => {
           email: email,
           id: uid,
           token: accessToken,
+          password: pass,
         })
       );
       setActive(false);
