@@ -8,17 +8,20 @@ import { getUserId } from '../../Hooks/user-auth';
 
 const Progress = ({ data, workoutId }) => {
   const userId = useSelector(getUserId);
-  const {data:userProgress1} = useGetUserProgressByIdQuery(userId);
-  
-  const pr = userProgress1[workoutId].progress;
+  const { data: userProgress1 } = useGetUserProgressByIdQuery(userId);
 
-
+  const workoutProgress = userProgress1[workoutId]?.progress;
   const userProgress2 = [];
-  Object.entries(pr).forEach(([key, value]) => {
-    userProgress2.push(value) 
-  })
-
- console.log(userProgress2)
+  
+  if (workoutProgress) {
+    Object.entries(workoutProgress).forEach(([key, value]) => {
+      userProgress2.push(value);
+    });
+  } else {
+    const userProgress3 = [];
+  }
+  
+  console.log(userProgress2);
 
 
 
