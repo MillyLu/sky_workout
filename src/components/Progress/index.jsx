@@ -2,23 +2,36 @@ import React from 'react';
 import cn from 'classnames';
 import classes from './index.module.css';
 import { useGetUserProgressByIdQuery } from '../../services/courses';
-import { useGetCourseByIdQuery } from '../../services/courses';
 import { useSelector } from 'react-redux';
 import { getUserId } from '../../Hooks/user-auth';
 
-const Progress = ({ data }) => {
-  const userId = useSelector(getUserId);
-  const {userProgress1} = useGetUserProgressByIdQuery(userId);
-  const {userProgress2} = useGetCourseByIdQuery();
- 
-  const userProgress = 6;
 
-  return (
+const Progress = ({ data, workoutId }) => {
+  const userId = useSelector(getUserId);
+  const {data:userProgress1} = useGetUserProgressByIdQuery(userId);
+  
+  const pr = userProgress1[workoutId].progress;
+
+
+  const userProgress2 = [];
+  Object.entries(pr).forEach(([key, value]) => {
+    userProgress2.push(value) 
+  })
+
+ console.log(userProgress2)
+
+
+
+
+
+
+ return (
     <div className={classes.progress}>
       <h2 className={classes.title}>Мой прогресс по тренировке:</h2>
       <ul className={classes.list}>
         {data?.exercise?.map((exercise, index) => {
-          const percent = Math.round(((userProgress || 0) / exercise[1]) * 100);
+          const item = userProgress2[index];
+          const percent = Math.round(((item || 0) / exercise[1]) * 100);
           return (
             <li key={index} className={classes.listItem}>
               <span className={classes.name}>{exercise[0]}</span>
@@ -42,7 +55,9 @@ const Progress = ({ data }) => {
                   {percent}%
                 </span>
               </div>
-              <button onClick={()=> console.log(userProgress1) }>ffff</button>
+              {/* <button onClick={()=> console.log(Object.entries(pr).forEach(([key, value]) => {
+    console.log( value)
+  })) }>ffff</button> */}
             </li>
           );
         })}
@@ -50,5 +65,6 @@ const Progress = ({ data }) => {
     </div>
   );
 };
+
 
 export default Progress;

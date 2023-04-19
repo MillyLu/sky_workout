@@ -188,7 +188,7 @@ export const coursesApi = createApi({
             async queryFn(id) {
               try {
                 const dbRef = ref(db);
-                const idProgress = await get(child(dbRef, `progress/`));
+                const idProgress = await get(child(dbRef, `progress/${id}`));
                 return { data: idProgress.val() };
               } catch (e) {
                 console.log(e);

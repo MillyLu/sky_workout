@@ -50,13 +50,13 @@ const Workout = () => {
         
           <div className={classes.exercises}>
             <Exercises data={data} onClick={handleClick} />
-            <Progress data={data} />
+            <Progress data={data} workoutId={id.id} />
           </div>
         
       </main>
       {isProgressModalShown && (
         <Modal onClick={openCloseProgressModal}>
-          <ProgressModal workout={id} data={data} onClick={handleSendClick}  />
+          <ProgressModal workout={id} data={data}  onClick={handleSendClick}  />
         </Modal>
       )}
       {isSuccessModalShown && (
