@@ -1,9 +1,17 @@
 import React from 'react';
 import cn from 'classnames';
 import classes from './index.module.css';
+import { useGetUserProgressByIdQuery } from '../../services/courses';
+import { useGetCourseByIdQuery } from '../../services/courses';
+import { useSelector } from 'react-redux';
+import { getUserId } from '../../Hooks/user-auth';
 
 const Progress = ({ data }) => {
-  const userProgress = 5;
+  const userId = useSelector(getUserId);
+  const {userProgress1} = useGetUserProgressByIdQuery(userId);
+  const {userProgress2} = useGetCourseByIdQuery();
+ 
+  const userProgress = 6;
 
   return (
     <div className={classes.progress}>
@@ -34,6 +42,7 @@ const Progress = ({ data }) => {
                   {percent}%
                 </span>
               </div>
+              <button onClick={()=> console.log(userProgress1) }>ffff</button>
             </li>
           );
         })}

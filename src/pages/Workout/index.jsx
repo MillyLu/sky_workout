@@ -56,7 +56,7 @@ const Workout = () => {
       </main>
       {isProgressModalShown && (
         <Modal onClick={openCloseProgressModal}>
-          <ProgressModal  data={data} onClick={handleSendClick}  />
+          <ProgressModal workout={id} data={data} onClick={handleSendClick}  />
         </Modal>
       )}
       {isSuccessModalShown && (

@@ -6,7 +6,7 @@ import db from "../firebase";
 export const coursesApi = createApi({
     reducerPath: "courses",
     baseQuery: fakeBaseQuery(),
-    tagTypes: ['Courses', 'User'],
+    tagTypes: ['Courses', 'User', 'Progress'],
 
     endpoints: (builder) => ({
         getCourses: builder.query({
@@ -139,8 +139,9 @@ export const coursesApi = createApi({
           addUserProgress: builder.mutation({
             async queryFn(payload) {
               try {
-                const userProgressAdd = await set(ref(db, 'progress/' + payload.id), {
-                    _id: payload.id,
+                const userProgressAdd = await set(ref(db,`progress/${payload.id}/${payload.workoutId}`) , {
+                    _id: payload.id, 
+                    workout: payload.workoutId,
                     progress: payload.progress                
                 });
                  return{userProgressAdd}; 
@@ -148,7 +149,8 @@ export const coursesApi = createApi({
                catch (error) {
                   console.log(error.message)                
               }
-          }
+          },
+          invalidatesTags: ['Progress']
             }), 
 
           updateUserLogin: builder.mutation({
@@ -181,6 +183,21 @@ export const coursesApi = createApi({
             providesTags: ['Courses']
           }),
 
+
+          getUserProgressById: builder.query({
+            async queryFn(id) {
+              try {
+                const dbRef = ref(db);
+                const idProgress = await get(child(dbRef, `progress/`));
+                return { data: idProgress.val() };
+              } catch (e) {
+                console.log(e);
+                return { error: e };
+              }
+            }, 
+            providesTags: ['Progress']
+          }),
+
           addCourseToUser: builder.mutation({
             async queryFn(payload) {
               try {
@@ -209,4 +226,4 @@ export const coursesApi = createApi({
     }) 
 });
 
-export const { useGetCoursesQuery, useGetWorkoutsQuery, useGetCourseByIdQuery, useGetWorkoutByIdQuery, useGetExerciseByIdQuery, useAddUserMutation, useAddCourseToUserMutation, useGetUserCoursesQuery, useGetloginByIdQuery, useGetAllWorkoutsInCourseQuery, useGetAllExerciseInWorkoutsQuery, useUpdateUserLoginMutation, useAddUserProgressMutation } = coursesApi;
+export const { useGetCoursesQuery, useGetWorkoutsQuery, useGetCourseByIdQuery, useGetWorkoutByIdQuery, useGetExerciseByIdQuery, useAddUserMutation, useAddCourseToUserMutation, useGetUserCoursesQuery, useGetloginByIdQuery, useGetAllWorkoutsInCourseQuery, useGetAllExerciseInWorkoutsQuery, useUpdateUserLoginMutation, useAddUserProgressMutation, useGetUserProgressByIdQuery } = coursesApi;
