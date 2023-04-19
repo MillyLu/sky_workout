@@ -9,6 +9,7 @@ import { Yoga } from "./pages/Yoga/yoga";
 import { Main } from "./pages/Main/Main";
 import { Profile } from "./pages/Profile/profile";
 import { Error } from "./pages/Error/Error";
+import { CoursePage } from "./pages/Course/CoursePage";
 import Workout from "./pages/Workout";
 
 export const AppRoutes = () => {
@@ -16,6 +17,7 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/yoga" element={<Yoga />} />
+      <Route path="/course/:id" element={<CoursePage />} />
       <Route path="/" element={<Main user={email} />} />
       <Route path="/stretching" element={<Stretching />} />
        <Route element={<ProtectedRoute isAllowed={Boolean(isAuth)} />}>

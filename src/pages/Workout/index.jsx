@@ -38,7 +38,7 @@ const Workout = () => {
       <main className={classes.main}>
         <h1 className={classes.heading}>{data?.course}</h1>
         <h2 className={classes.title}>
-          {data?.description}
+          {data?.name}/ {data?.description}
         </h2>
         <div className={classes.player}>
           <ReactPlayer
