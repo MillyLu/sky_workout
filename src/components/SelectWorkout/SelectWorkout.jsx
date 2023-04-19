@@ -18,7 +18,7 @@ export function SelectWorkout({ setModalActiveWorkout, workout}) {
 
 
 
-  const training = [
+  /* const training = [
     {
       id: 1,
       title: "Утренняя практика",
@@ -73,7 +73,7 @@ export function SelectWorkout({ setModalActiveWorkout, workout}) {
     { id: 1, title: "Техника дыхания", path: "/bDay1" },
     { id: 2, title: "Тренировка мыщц бедер", path: "/bDay1" },
     { id: 3, title: "Тренировка мыщц ягодиц", path: "/bDay1" },
-  ];
+  ]; */
 
   return (
     <div className={styles.modal} onClick={() => setModalActiveWorkout(false)}>
@@ -82,8 +82,7 @@ export function SelectWorkout({ setModalActiveWorkout, workout}) {
         <div className={styles.list}>
           {
             (data) && data.map((item) => (
-              <Workout
-                key={item.id}
+              <Workout key={item._id}
                 title={item.name}
                 description={item.description}
                 path={'/workout/'+item._id}
@@ -91,26 +90,7 @@ export function SelectWorkout({ setModalActiveWorkout, workout}) {
             ))
           }
 
-          {workout === "Yoga" &&
-            training.map((item) => (
-              <Workout
-                key={item.id}
-                title={item.title}
-                description={item.description}
-                day={item.day}
-                path={item.path}
-              />
-            ))}
 
-          {workout === "Stretching" &&
-            stretching.map((item) => (
-              <Workout key={item.id} title={item.title} path={item.path} />
-            ))}
-
-          {workout === "Bodyflex" &&
-            bodyflex.map((item) => (
-              <Workout key={item.id} title={item.title} path={item.path} />
-            ))}
         </div>
       </div>
     </div>

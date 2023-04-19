@@ -6,7 +6,7 @@ import db from "../firebase";
 export const coursesApi = createApi({
     reducerPath: "courses",
     baseQuery: fakeBaseQuery(),
-    tagTypes: ['Courses'],
+    tagTypes: ['Courses', 'User'],
 
     endpoints: (builder) => ({
         getCourses: builder.query({
@@ -103,7 +103,8 @@ export const coursesApi = createApi({
               console.log(e);
               return { error: e };
             }
-          }
+          },
+          providesTags: ['User']
         }),
 
         getExerciseById: builder.query({
@@ -131,8 +132,24 @@ export const coursesApi = createApi({
              catch (error) {
                 console.log(error.message)                
             }
-        }
+        },
+        invalidatesTags: ['User']
           }), 
+
+          addUserProgress: builder.mutation({
+            async queryFn(payload) {
+              try {
+                const userProgressAdd = await set(ref(db, 'progress/' + payload.id), {
+                    _id: payload.id,
+                    progress: payload.progress                
+                });
+                 return{userProgressAdd}; 
+                }
+               catch (error) {
+                  console.log(error.message)                
+              }
+          }
+            }), 
 
           updateUserLogin: builder.mutation({
             async queryFn(payload) {
@@ -146,7 +163,8 @@ export const coursesApi = createApi({
                catch (error) {
                   console.log(error.message)                
               }
-          }
+          },
+          invalidatesTags: ['User']
             }), 
 
           getUserCourses: builder.query({
@@ -159,7 +177,8 @@ export const coursesApi = createApi({
                 console.log(e);
                 return { error: e };
               }
-            }
+            }, 
+            providesTags: ['Courses']
           }),
 
           addCourseToUser: builder.mutation({
@@ -168,27 +187,26 @@ export const coursesApi = createApi({
                 const dbRef = ref(db);
                 const queryUserCourses = await get(child(dbRef, 'users/' + payload.id + '/courses'));
                 const userCourses = queryUserCourses.val();
-                
+                const userRef = ref(db, 'users/' + payload.id);
                 if(userCourses === null) {
-                  await update(ref(db, 'users/' + payload.id), {
-                    courses: [payload.courseId]
-                  })
+                  await update(userRef, { courses: [payload.courseId] });
                 } else {
-                  if(Object.values(userCourses).includes(payload.courseId)) 
-                   {return} else {
-                    userCourses.push(payload.courseId);
-                    await update(ref(db, 'users/' + payload.id), {
-                      courses: userCourses
-                })
-                }
-              }
+                  userCourses.push(payload.courseId);
+
+            const uniqueCourseArr = Array.from(new Set(userCourses));
+
+            await update(userRef, { courses: uniqueCourseArr });
+          }
+
+          return { data: userCourses };
             }
                catch (error) {
                   console.log(error.message)                
               }
-          }
+          },
+          invalidatesTags: ['Courses']
             }), 
     }) 
 });
 
-export const { useGetCoursesQuery, useGetWorkoutsQuery, useGetCourseByIdQuery, useGetWorkoutByIdQuery, useGetExerciseByIdQuery, useAddUserMutation, useAddCourseToUserMutation, useGetUserCoursesQuery, useGetloginByIdQuery, useGetAllWorkoutsInCourseQuery, useGetAllExerciseInWorkoutsQuery, useUpdateUserLoginMutation } = coursesApi;
+export const { useGetCoursesQuery, useGetWorkoutsQuery, useGetCourseByIdQuery, useGetWorkoutByIdQuery, useGetExerciseByIdQuery, useAddUserMutation, useAddCourseToUserMutation, useGetUserCoursesQuery, useGetloginByIdQuery, useGetAllWorkoutsInCourseQuery, useGetAllExerciseInWorkoutsQuery, useUpdateUserLoginMutation, useAddUserProgressMutation } = coursesApi;

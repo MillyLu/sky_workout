@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import styles from "./index.module.css";
 import Yoga from "./joga.png";
 import Stretching from './stretching.png'
@@ -8,13 +9,31 @@ import Bodyflex from "./bodyflex1.png";
 import { WorkoutItem } from "../WorkoutItem/WorkoutItem";
 import { Button } from "../WorkoutItem/Button";
 import { SelectWorkout } from "../../components/SelectWorkout/SelectWorkout";
+import { getUserId } from "../../Hooks/user-auth";
+import { useGetUserCoursesQuery } from "../../services/courses";
+import { useGetCoursesQuery } from "../../services/courses";
 
 
-export function ProfileCourses({  data }) {
+export function ProfileCourses() {
 
   const [modalActiveWorkout, setModalActiveWorkout] = useState(false);
   const [workout, setWorkout] = useState("");
-  const YogaOnClick = () => {
+
+  const userId = useSelector(getUserId);
+
+  const { data: userCoursesIds } = useGetUserCoursesQuery(userId);
+
+  const { data, isSuccess, isLoading } = useGetCoursesQuery('', {
+    selectFromResult: ({ data, isSuccess, isLoading }) => ({
+      data: data?.filter((course) => userCoursesIds?.includes(course._id)),
+      isSuccess,
+      isLoading
+    })
+  });
+
+
+
+  /* const YogaOnClick = () => {
     setWorkout("Yoga");
     setModalActiveWorkout(true);
   };
@@ -27,7 +46,7 @@ export function ProfileCourses({  data }) {
   const BodyflexOnClick = () => {
     setWorkout("Bodyflex");
     setModalActiveWorkout(true);
-  };
+  }; */
 
   const onClick = (e) => {
     setWorkout(e.target.value);
@@ -42,10 +61,11 @@ export function ProfileCourses({  data }) {
     <div className={styles.courses}>
       <h2 className={styles.courses__title}>Мои курсы</h2>
       <div className={styles.courses__content}>
+      {isLoading && <span className={styles.loader}></span>}
        
           {
-            (data && data.map((item) => (
-              <div className={styles.courses__card}>
+            (isSuccess && data && data.map((item) => (
+              <div className={styles.courses__card} key={item._id}>
               <WorkoutItem 
               key={item._id}
               name={item.name}
@@ -57,29 +77,7 @@ export function ProfileCourses({  data }) {
             ))
           }
 
-        <div className={styles.courses__card}>
-          <WorkoutItem
-            name={"Йога"}
-            img={Yoga}
-            button={<Button function={YogaOnClick} button={"Перейти →"} />}
-          />
-        </div>
-        <div className={styles.courses__card}>
-          <WorkoutItem
-            name={"Стретчинг"}
-            img={Stretching}
-            button={
-              <Button function={StretchingOnClick} button={"Перейти →"} />
-            }
-          />
-        </div>
-        <div className={styles.courses__card}>
-          <WorkoutItem
-            name={"Бодифлекс"}
-            img={Bodyflex}
-            button={<Button function={BodyflexOnClick} button={"Перейти →"} />}
-          />
-        </div>
+  
       </div>
       {modalActiveWorkout && (
         <SelectWorkout
