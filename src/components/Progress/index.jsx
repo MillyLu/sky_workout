@@ -1,71 +1,45 @@
-import React from "react";
-import cn from "classnames";
-import classes from "./index.module.css";
-import { useGetUserProgressByIdQuery } from "../../services/courses";
-import { useSelector } from "react-redux";
-import { getUserId } from "../../Hooks/user-auth";
+import React from 'react';
+import cn from 'classnames';
+import classes from './index.module.css';
 
-const Progress = ({ data, workoutId }) => {
-  const userId = useSelector(getUserId);
-  const {
-    data: userProgress1,
-    isSuccess,
-    isError,
-  } = useGetUserProgressByIdQuery(userId);
+const Progress = ({ data }) => {
+  const userProgress = 5;
 
-  if (isSuccess) {
-    const workoutProgress = userProgress1[workoutId]?.progress;
-    const userProgress2 = [];
-
-    if (workoutProgress) {
-      Object.entries(workoutProgress).forEach(([key, value]) => {
-        userProgress2.push(value);
-      });
-    } else {
-      const userProgress3 = [];
-    }
-
-    console.log(userProgress2);
-
-    return (
-      <div className={classes.progress}>
-        <h2 className={classes.title}>Мой прогресс по тренировке:</h2>
-        <ul className={classes.list}>
-          {data?.exercise?.map((exercise, index) => {
-            const item = userProgress2[index];
-            const percent = Math.round(((item || 0) / exercise[1]) * 100);
-            return (
-              <li key={index} className={classes.listItem}>
-                <span className={classes.name}>{exercise[0]}</span>
+  return (
+    <div className={classes.progress}>
+      <h2 className={classes.title}>Мой прогресс по тренировке:</h2>
+      <ul className={classes.list}>
+        {data?.exercise?.map((exercise, index) => {
+          const percent = Math.round(((userProgress || 0) / exercise[1]) * 100);
+          return (
+            <li key={index} className={classes.listItem}>
+              <span className={classes.name}>{exercise[0]}</span>
+              <div
+                className={cn(
+                  classes.progressbar,
+                  classes[`colorBg${index + 1}`]
+                )}
+              >
                 <div
                   className={cn(
-                    classes.progressbar,
-                    classes[`colorBg${index + 1}`]
+                    classes.done,
+                    classes[`color${index + 1}`]
                   )}
+                  style={{ width: `${percent}%` }}
+                ></div>
+                <span
+                  className={classes.percent}
+                  style={{ left: `${percent}px` }}
                 >
-                  <div
-                    className={cn(classes.done, classes[`color${index + 1}`])}
-                    style={{ width: `${percent}%` }}
-                  ></div>
-                  <span
-                    className={classes.percent}
-                    style={{ left: `${percent}px` }}
-                  >
-                    {percent}%
-                  </span>
-                </div>
-                {/* <button onClick={()=> console.log(Object.entries(pr).forEach(([key, value]) => {
-      console.log( value)
-    })) }>ffff</button> */}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    );
-  } else {
-    console.log(isError);
-  }
+                  {percent}%
+                </span>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 };
 
 export default Progress;

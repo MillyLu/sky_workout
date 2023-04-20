@@ -16,7 +16,7 @@ const Workout = () => {
 
   const id = useParams();
 
-  const { data } = useGetWorkoutByIdQuery(id.id);
+  const {data} = useGetWorkoutByIdQuery(id.id);
 
   const openCloseProgressModal = () => {
     setIsProgressModalShown(!isProgressModalShown);
@@ -37,24 +37,29 @@ const Workout = () => {
       <main className={classes.main}>
         <h1 className={classes.heading}>{data?.course}</h1>
         <h2 className={classes.title}>
-          {data?.name}/ {data?.description}
+          {data?.description}
         </h2>
         <div className={classes.player}>
-          <ReactPlayer url={data?.link} width="100%" height="100%" />
+          <ReactPlayer
+            url={data?.link}
+            width="100%"
+            height="100%"
+          />
         </div>
-
-        <div className={classes.exercises}>
-          <Exercises data={data} onClick={handleClick} />
-          <Progress data={data} workoutId={id.id} />
-        </div>
+        
+          <div className={classes.exercises}>
+            <Exercises data={data} onClick={handleClick} />
+            <Progress data={data} />
+          </div>
+        
       </main>
       {isProgressModalShown && (
         <Modal onClick={openCloseProgressModal}>
-          <ProgressModal workout={id} data={data} onClick={handleSendClick} />
+          <ProgressModal  data={data} onClick={handleSendClick}  />
         </Modal>
       )}
       {isSuccessModalShown && (
-        <SuccessModal setIsSuccessModalShown={setIsSuccessModalShown} />
+        <SuccessModal  setIsSuccessModalShown={setIsSuccessModalShown} />
       )}
     </div>
   );
