@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import ButtonMain from '../Exercises/ButtonMain/index'
 import classes from './index.module.css'
-import InputProgress from './InputProgress/index'
 
   const ProgressModal = ({ data, onClick }) => {
     const [exerciseCounts, setExerciseCounts] = useState(
