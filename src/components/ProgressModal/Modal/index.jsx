@@ -1,5 +1,5 @@
-import classes from './index.module.css'
-import Portal from './Portal/index'
+import classes from "./index.module.css";
+import Portal from "./Portal/index";
 
 const Modal = ({ children, onClick }) => {
   return (
@@ -9,7 +9,7 @@ const Modal = ({ children, onClick }) => {
         <div className={classes.close} onClick={onClick} />
       </div>
     </Portal>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;

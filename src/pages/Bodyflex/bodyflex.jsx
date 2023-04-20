@@ -3,7 +3,7 @@ import s from "../../components/CourseType/CourseType.module.css";
 import { useGetCourseByIdQuery } from "../../services/courses.js";
 
 export const Bodyflex = () => {
-  const id = 'ab3c5h ';
+  const id = "ab3c5h ";
   const { data = [] } = useGetCourseByIdQuery(id);
 
   return (

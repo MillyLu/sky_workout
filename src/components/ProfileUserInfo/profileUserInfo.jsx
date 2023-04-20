@@ -9,13 +9,18 @@ import { getAuth } from "@firebase/auth";
 import { getUserId, getUserPass } from "../../Hooks/user-auth";
 import { useGetloginByIdQuery } from "../../services/courses";
 
-export function ProfileUserInfo({ setActive, setModalActiveLogin, nLogin, nPass }) {
+export function ProfileUserInfo({
+  setActive,
+  setModalActiveLogin,
+  nLogin,
+  nPass,
+}) {
   const user = useAuth();
   const auth = getAuth();
   const userDB = auth.currentUser;
   const userId = useSelector(getUserId);
   const userPass = useSelector(getUserPass);
-  const {data} = useGetloginByIdQuery(userId);
+  const { data } = useGetloginByIdQuery(userId);
   const [login, setLogin] = useState(data);
   const [pass, setPass] = useState(userPass);
   const [hidePass, setHidePass] = useState(true);
@@ -25,16 +30,15 @@ export function ProfileUserInfo({ setActive, setModalActiveLogin, nLogin, nPass 
   console.log(userDB.displayName);
 
   useEffect(() => {
-    if(!nLogin) return;
-    setLogin(nLogin)
+    if (!nLogin) return;
+    setLogin(nLogin);
   }, [nLogin]);
 
   useEffect(() => {
-    if(!nPass) return;
-    setPass(nPass)
-  }, [nPass])
+    if (!nPass) return;
+    setPass(nPass);
+  }, [nPass]);
 
-  
   console.log(user);
   console.log(data);
   console.log(userPass);

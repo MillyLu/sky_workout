@@ -3,7 +3,7 @@ import s from "../../components/CourseType/CourseType.module.css";
 import { useGetCourseByIdQuery } from "../../services/courses.js";
 
 export const StepAerobics = () => {
-  const id = 'ab5c7n';
+  const id = "ab5c7n";
   const { data = [] } = useGetCourseByIdQuery(id);
 
   return (

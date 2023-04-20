@@ -8,14 +8,13 @@ import { ReactComponent as Phone } from "../../img/phone.svg";
 import { useAddCourseToUserMutation } from "../../services/courses";
 
 export const Course = (props) => {
-
   const [addCourse] = useAddCourseToUserMutation();
 
   function onHandleClick() {
     addCourse({
-      id: 'oWncN7j2nhNQafKqe2ylTigwXfH3',
-      courseId: 'ab5c7n'
-    })
+      id: "oWncN7j2nhNQafKqe2ylTigwXfH3",
+      courseId: "ab5c7n",
+    });
   }
 
   return (
@@ -63,7 +62,11 @@ export const Course = (props) => {
           </div>
         </div>
       </div>
-      <p className={s.description}>{props.definition}<br/>{props.description}</p>
+      <p className={s.description}>
+        {props.definition}
+        <br />
+        {props.description}
+      </p>
       <div className={s.application}>
         <div className={s.application_top}>
           <p className={s.application_text}>

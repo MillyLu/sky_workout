@@ -6,8 +6,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { setUser } from "../../store/Slices/userSlice";
 import { useAddUserMutation } from "../../services/courses";
 
-
-export const SignUp = ({setActive}) => {
+export const SignUp = ({ setActive }) => {
   const [login, setLogin] = useState("");
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
@@ -18,7 +17,6 @@ export const SignUp = ({setActive}) => {
 
   const dispatch = useDispatch();
   const [addUser] = useAddUserMutation();
-
 
   const auth = getAuth();
 
@@ -40,13 +38,13 @@ export const SignUp = ({setActive}) => {
           id: uid,
           token: accessToken,
           password: pass,
-          login: login
+          login: login,
         })
       );
       addUser({
         id: uid,
-        username: login
-      })
+        username: login,
+      });
       setActive(false);
     } catch (error) {
       setMailError("");

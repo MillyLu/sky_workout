@@ -16,14 +16,11 @@ import { useGetCourseByIdQuery } from "../../services/courses";
 import { useSelector } from "react-redux";
 import { getUserId } from "../../Hooks/user-auth";
 
-export const CourseMode = ({id}) => {
-
+export const CourseMode = ({ id }) => {
   const [error, setError] = useState(false);
   const [addCourse] = useAddCourseToUserMutation();
-  const {data} = useGetCourseByIdQuery(id.id);
+  const { data } = useGetCourseByIdQuery(id.id);
   const userId = useSelector(getUserId);
-
-
 
   console.log(id);
   console.log(data);
@@ -31,14 +28,14 @@ export const CourseMode = ({id}) => {
   function onHandleClick() {
     console.log(userId);
     console.log(id.id);
-    if(!userId) {
+    if (!userId) {
       setError(true);
       return;
-    }  
+    }
     addCourse({
       id: userId,
-      courseId: id.id
-    })
+      courseId: id.id,
+    });
   }
 
   return (
@@ -46,8 +43,34 @@ export const CourseMode = ({id}) => {
       <Link to="/" className={s.logo}>
         <Logo alt="лого" />
       </Link>
-      <div className={(data?.name === "Йога"? s.skill_card_yoga : data?.name === "Бодифлекс" ? s.skill_card_bodyflex : data?.name === "Стретчинг" ? s.skill_card_stretching : data?.name === "Танцевальный фитнес" ? s.skill_card_dancefitness : s.skill_card_stepaerobics)}>
-        <h1 to="/" className={s.skill_card_name} url={(data?.name === "Йога"? Yoga : data?.name === "Бодифлекс" ? Bodyflex : data?.name === "Стретчинг" ? Stretching : data?.name === "Танцевальный фитнес" ? Dance : Step)}>
+      <div
+        className={
+          data?.name === "Йога"
+            ? s.skill_card_yoga
+            : data?.name === "Бодифлекс"
+            ? s.skill_card_bodyflex
+            : data?.name === "Стретчинг"
+            ? s.skill_card_stretching
+            : data?.name === "Танцевальный фитнес"
+            ? s.skill_card_dancefitness
+            : s.skill_card_stepaerobics
+        }
+      >
+        <h1
+          to="/"
+          className={s.skill_card_name}
+          url={
+            data?.name === "Йога"
+              ? Yoga
+              : data?.name === "Бодифлекс"
+              ? Bodyflex
+              : data?.name === "Стретчинг"
+              ? Stretching
+              : data?.name === "Танцевальный фитнес"
+              ? Dance
+              : Step
+          }
+        >
           {data?.name}
         </h1>
       </div>
@@ -72,20 +95,17 @@ export const CourseMode = ({id}) => {
       <div>
         <h3 className={s.directions}>Направления:</h3>
         <div>
-
-            <div className={s.textDirections}>
-              {
-                (data?.directions && 
-                  data?.directions.map((item) => (
-                    <p key={item}>• {item}</p>
-                  )))
-              }
-
-            </div>
-
+          <div className={s.textDirections}>
+            {data?.directions &&
+              data?.directions.map((item) => <p key={item}>• {item}</p>)}
+          </div>
         </div>
       </div>
-      <p className={s.description}>{data?.definition}<br/>{data?.description}</p>
+      <p className={s.description}>
+        {data?.definition}
+        <br />
+        {data?.description}
+      </p>
       <div className={s.application}>
         <div className={s.application_top}>
           <p className={s.application_text}>
@@ -96,11 +116,11 @@ export const CourseMode = ({id}) => {
           <button onClick={onHandleClick} className={s.application_button}>
             Записаться на тренировку
           </button>
-          {(error) && (
-            <p className={s.error}>Для записи на тренировку необходимо войти или зарегистрироваться!</p>
-          )
-          
-          } 
+          {error && (
+            <p className={s.error}>
+              Для записи на тренировку необходимо войти или зарегистрироваться!
+            </p>
+          )}
         </div>
         <Phone className={s.phone_svg} />
         <div className=""></div>

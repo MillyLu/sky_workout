@@ -20,7 +20,7 @@ export const AppRoutes = () => {
       <Route path="/course/:id" element={<CoursePage />} />
       <Route path="/" element={<Main user={email} />} />
       <Route path="/stretching" element={<Stretching />} />
-       <Route element={<ProtectedRoute isAllowed={Boolean(isAuth)} />}>
+      <Route element={<ProtectedRoute isAllowed={Boolean(isAuth)} />}>
         <Route path="/profile" element={<Profile />} />
         <Route path="/workout" element={<Workout />} />
         <Route path="/workout/:id" element={<Workout />} />
@@ -29,8 +29,6 @@ export const AppRoutes = () => {
       <Route path="/step_aerobics" element={<StepAerobics />} />
       <Route path="/bodyflex" element={<Bodyflex />} />
       <Route path="*" element={<Error />} />
-
-    
     </Routes>
   );
 };

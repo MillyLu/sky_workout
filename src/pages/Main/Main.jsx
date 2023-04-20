@@ -58,22 +58,26 @@ export const Main = ({ user }) => {
         </div>
       </div>
       <div className={s.main_items}>
-     
-        {
-            (data && data.map((item) => (
-              <Link to={/course/+item._id} key={item._id}>
-                <WorkoutItem 
+        {data &&
+          data.map((item) => (
+            <Link to={/course/ + item._id} key={item._id}>
+              <WorkoutItem
                 key={item._id}
                 name={item.name}
-                img={(item.name === "Йога"? Joga : item.name === "Бодифлекс" ? Bodyflex : item.name === "Стретчинг" ? Stretching : item.name === "Танцевальный фитнес" ? Dance : Step)}
-
-                />
-              </Link>
-               
-
-            )
-            ))
-          }
+                img={
+                  item.name === "Йога"
+                    ? Joga
+                    : item.name === "Бодифлекс"
+                    ? Bodyflex
+                    : item.name === "Стретчинг"
+                    ? Stretching
+                    : item.name === "Танцевальный фитнес"
+                    ? Dance
+                    : Step
+                }
+              />
+            </Link>
+          ))}
       </div>
       <button className={s.up_button} onClick={scrollToTop}>
         Наверх ↑
@@ -82,7 +86,8 @@ export const Main = ({ user }) => {
         <Modal
           active={modalActive}
           setActive={setModalActive}
-          setSignUp={setSignUp}>
+          setSignUp={setSignUp}
+        >
           {signUp ? (
             <SignUp setActive={setModalActive} />
           ) : (

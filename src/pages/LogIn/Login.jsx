@@ -40,7 +40,6 @@ export const LogIn = ({ setSignUp, setActive }) => {
         setMailError("Не правильный e-mail");
         return;
       }
-      
     }
   };
 

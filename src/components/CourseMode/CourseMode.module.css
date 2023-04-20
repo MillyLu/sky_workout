@@ -117,7 +117,7 @@
   width: 244px;
 }
 
-.textDirections{
+.textDirections {
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -128,10 +128,8 @@
   display: grid;
   grid-template-columns: 422px 422px;
 
-
   margin-bottom: 75px;
   margin-left: 10px;
-
 }
 
 .description {
@@ -213,6 +211,6 @@
   transform: scale(1.05);
 }
 
-.error{
+.error {
   color: red;
 }

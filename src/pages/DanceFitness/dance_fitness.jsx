@@ -3,7 +3,7 @@ import s from "../../components/CourseType/CourseType.module.css";
 import { useGetCourseByIdQuery } from "../../services/courses.js";
 
 export const DanceFitness = () => {
-  const id = 'ab4c6m';
+  const id = "ab4c6m";
   const { data = [] } = useGetCourseByIdQuery(id);
 
   return (

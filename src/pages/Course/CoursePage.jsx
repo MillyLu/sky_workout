@@ -6,11 +6,7 @@ import { CourseMode } from "../../components/CourseMode/CourseMode";
 export function CoursePage() {
   const id = useParams();
   console.log(id);
- // const { data = [] } = useGetCourseByIdQuery(id);
+  // const { data = [] } = useGetCourseByIdQuery(id);
 
-  return (
-    <CourseMode id={id}
-
-    />
-  );
-};
+  return <CourseMode id={id} />;
+}
