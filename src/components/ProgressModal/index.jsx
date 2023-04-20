@@ -1,16 +1,22 @@
-import ButtonMain from '../Exercises/ButtonMain/index'
-import classes from './index.module.css'
-import { useForm } from 'react-hook-form'
-import  InputProgress  from './Progress/index'
-import { getUserId } from '../../Hooks/user-auth' 
-import { useAddUserProgressMutation } from '../../services/courses'
-import { useSelector } from 'react-redux'
-
+import ButtonMain from "../Exercises/ButtonMain/index";
+import classes from "./index.module.css";
+import { useForm } from "react-hook-form";
+import InputProgress from "./Progress/index";
+import { getUserId } from "../../Hooks/user-auth";
+import {
+  useAddUserProgressMutation,
+  useGetWorkoutByIdQuery,
+} from "../../services/courses";
+import { useSelector } from "react-redux";
+import { clearConfigCache } from "prettier";
 
 const ProgressModal = ({ data, onClick, workout }) => {
-  
+  const maxValue = data.exercise.map((item) => item[1]);
+  console.log(maxValue);
   const [userProgress] = useAddUserProgressMutation();
   const userId = useSelector(getUserId);
+
+  const { data: workoutById } = useGetWorkoutByIdQuery([workout.id]);
 
   const {
     register,
@@ -19,13 +25,12 @@ const ProgressModal = ({ data, onClick, workout }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("Прогресс пользователя:", data);
     onClick();
-    console.log(workout)
+
     userProgress({
       id: userId,
       progress: data,
-      workoutId: workout.id
+      workoutId: workout.id,
     });
   };
 
@@ -42,10 +47,8 @@ const ProgressModal = ({ data, onClick, workout }) => {
                 register={register}
                 errors={errors}
                 max={exercise[1]}
-                            
-                            />
+              />
             </label>
-            
           </div>
         ))}
       </div>
@@ -55,4 +58,3 @@ const ProgressModal = ({ data, onClick, workout }) => {
 };
 
 export default ProgressModal;
-
