@@ -9,50 +9,47 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../img/logo.svg";
 
 export function NewLogin({ setModalActiveLogin, setNLogin }) {
-
-  const [login, setLogin] = useState('');
-  const [error, setError] = useState('');
+  const [login, setLogin] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const userId = useSelector(getUserId);
-  const[updateLoginDB] = useUpdateUserLoginMutation();
-  
-  function updateLogin() {
+  const [updateLoginDB] = useUpdateUserLoginMutation();
 
+  function updateLogin() {
     const auth = getAuth();
     updateProfile(auth.currentUser, {
-      displayName: login
-    }).then(() => {
-  
-        dispatch(setNewLogin({ 
-          login: login 
-        }));
+      displayName: login,
+    })
+      .then(() => {
+        dispatch(
+          setNewLogin({
+            login: login,
+          })
+        );
 
         updateLoginDB({
           id: userId,
-          username: login
-        })
+          username: login,
+        });
 
         setNLogin(login);
-  
-        setModalActiveLogin(false)
+
+        setModalActiveLogin(false);
       })
-      .catch ((error) => {
+      .catch((error) => {
         setError(error.message);
-      })
-    };
-
-
+      });
+  }
 
   function changeLogin(e) {
     e.preventDefault();
 
-    if(!login) {
-      setError('Введите новый login');
+    if (!login) {
+      setError("Введите новый login");
       return;
     }
 
     updateLogin();
-
   }
 
   return (
@@ -73,13 +70,8 @@ export function NewLogin({ setModalActiveLogin, setNLogin }) {
             value={login}
             onChange={(e) => setLogin(e.target.value)}
           ></input>
-          {(error) && 
-            <p className={styles.error}>{error}</p>
-          }
-          <button
-            onClick={changeLogin}
-            className={styles.button}
-          >
+          {error && <p className={styles.error}>{error}</p>}
+          <button onClick={changeLogin} className={styles.button}>
             Сохранить
           </button>
         </form>

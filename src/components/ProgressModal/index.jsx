@@ -32,6 +32,7 @@ import InputProgress from './InputProgress/index'
                 min={1}
                 max={exercise[1]}
                 onChange={(e) => handleInputChange(index, e)}
+
               />
             </label>
           </div>
@@ -43,5 +44,3 @@ import InputProgress from './InputProgress/index'
   };
   
   export default ProgressModal;
-  
-

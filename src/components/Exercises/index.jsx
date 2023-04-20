@@ -1,5 +1,5 @@
-import ButtonMain from './ButtonMain/index'
-import classes from './index.module.css'
+import ButtonMain from "./ButtonMain/index";
+import classes from "./index.module.css";
 
 const Exercises = ({ onClick, data }) => {
   return (
@@ -12,9 +12,9 @@ const Exercises = ({ onClick, data }) => {
           </li>
         ))}
       </ul>
-      <ButtonMain content="Заполнить свой прогресс" onClick={onClick}/>
+      <ButtonMain content="Заполнить свой прогресс" onClick={onClick} />
     </div>
-  )
-}
+  );
+};
 
-export default Exercises
+export default Exercises;

@@ -8,27 +8,30 @@ import { NewPassword } from "../../components/NewPassword/NewPassword";
 import { NewLogin } from "../../components/NewLogin/NewLogin";
 
 import { getUserId } from "../../Hooks/user-auth";
-import { useGetUserCoursesQuery, useGetCoursesQuery } from "../../services/courses";
+import {
+  useGetUserCoursesQuery,
+  useGetCoursesQuery,
+} from "../../services/courses";
 
 export function Profile() {
   const [modalActivePass, setModalActivePass] = useState(false);
   const [modalActiveLogin, setModalActiveLogin] = useState(false);
-//  const [modalActiveWorkout, setModalActiveWorkout] = useState(false);
-//  const [workout, setWorkout] = useState("");
-const [nLogin, setNLogin] = useState('');
-const [nPass, setNPass] = useState('');
+  //  const [modalActiveWorkout, setModalActiveWorkout] = useState(false);
+  //  const [workout, setWorkout] = useState("");
+  const [nLogin, setNLogin] = useState("");
+  const [nPass, setNPass] = useState("");
 
   const userId = useSelector(getUserId);
 
   const { data: userCoursesIds } = useGetUserCoursesQuery(userId);
 
-  const { data:allCour } = useGetCoursesQuery();
+  const { data: allCour } = useGetCoursesQuery();
   console.log(allCour);
 
-  const { data } = useGetCoursesQuery('', {
+  const { data } = useGetCoursesQuery("", {
     selectFromResult: ({ data }) => ({
-      data: data?.filter((course) => userCoursesIds?.includes(course._id))
-    })
+      data: data?.filter((course) => userCoursesIds?.includes(course._id)),
+    }),
   });
   console.log(data);
 
@@ -41,15 +44,16 @@ const [nPass, setNPass] = useState('');
         nLogin={nLogin}
         nPass={nPass}
       />
-      <ProfileCourses
-
-        data={data}
-      />
-      {modalActivePass && <NewPassword setActive={setModalActivePass}  setNPass={setNPass}/>}
-      {modalActiveLogin && (
-        <NewLogin setModalActiveLogin={setModalActiveLogin} setNLogin={setNLogin} />
+      <ProfileCourses data={data} />
+      {modalActivePass && (
+        <NewPassword setActive={setModalActivePass} setNPass={setNPass} />
       )}
-    
+      {modalActiveLogin && (
+        <NewLogin
+          setModalActiveLogin={setModalActiveLogin}
+          setNLogin={setNLogin}
+        />
+      )}
     </div>
   );
 }

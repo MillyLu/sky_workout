@@ -3,7 +3,7 @@ import s from "../../components/CourseType/CourseType.module.css";
 import { useGetCourseByIdQuery } from "../../services/courses.js";
 
 export const Stretching = () => {
-  const id = 'ab2c4k';
+  const id = "ab2c4k";
   const { data = [] } = useGetCourseByIdQuery(id);
 
   return (

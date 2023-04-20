@@ -14,9 +14,9 @@ export function Workout({ title, description, path }) {
           {active && <Done className={styles.done} />}
         </div>
 
-        {description  && (
+        {description && (
           <p className={active ? styles.descriptionActive : styles.description}>
-            {description} 
+            {description}
           </p>
         )}
       </div>

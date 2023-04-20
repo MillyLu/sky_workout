@@ -13,11 +13,15 @@ import { WorkoutItem } from "../../components/WorkoutItem/WorkoutItem";
 import { Profile } from "../../components/Profile/Profile";
 import s from "./Main.module.css";
 import { useState } from "react";
+import { useGetCoursesQuery } from "../../services/courses";
 
 export const Main = ({ user }) => {
   const [modalActive, setModalActive] = useState(false);
 
   const [signUp, setSignUp] = useState(false);
+
+  const { data } = useGetCoursesQuery();
+  console.log(data);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -54,21 +58,26 @@ export const Main = ({ user }) => {
         </div>
       </div>
       <div className={s.main_items}>
-        <Link to="/yoga">
-          <WorkoutItem name={"Йога"} img={Joga} />
-        </Link>
-        <Link to="/stretching">
-          <WorkoutItem name={"Стретчинг"} img={Stretching} />
-        </Link>
-        <Link to="/dance_fitness">
-          <WorkoutItem name={"Танцевальный фитнес"} img={Dance} />
-        </Link>
-        <Link to="/step_aerobics">
-          <WorkoutItem name={"Степ-аэробика"} img={Step} />
-        </Link>
-        <Link to="/bodyflex">
-          <WorkoutItem name={"Бодифлекс"} img={Bodyflex} />
-        </Link>
+        {data &&
+          data.map((item) => (
+            <Link to={/course/ + item._id} key={item._id}>
+              <WorkoutItem
+                key={item._id}
+                name={item.name}
+                img={
+                  item.name === "Йога"
+                    ? Joga
+                    : item.name === "Бодифлекс"
+                    ? Bodyflex
+                    : item.name === "Стретчинг"
+                    ? Stretching
+                    : item.name === "Танцевальный фитнес"
+                    ? Dance
+                    : Step
+                }
+              />
+            </Link>
+          ))}
       </div>
       <button className={s.up_button} onClick={scrollToTop}>
         Наверх ↑
@@ -77,7 +86,8 @@ export const Main = ({ user }) => {
         <Modal
           active={modalActive}
           setActive={setModalActive}
-          setSignUp={setSignUp}>
+          setSignUp={setSignUp}
+        >
           {signUp ? (
             <SignUp setActive={setModalActive} />
           ) : (

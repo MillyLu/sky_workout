@@ -5,7 +5,6 @@ import { getUserId } from "../../Hooks/user-auth";
 import { removeUser } from "../../store/Slices/userSlice";
 import { useGetloginByIdQuery } from "../../services/courses";
 
-
 export const Profile = ({ profile }) => {
   const dispatch = useDispatch();
 
@@ -14,7 +13,7 @@ export const Profile = ({ profile }) => {
   };
 
   const userId = useSelector(getUserId);
-  const {data} = useGetloginByIdQuery(userId);
+  const { data } = useGetloginByIdQuery(userId);
   return (
     <div className={profile ? s.profileNotMain : s.profile}>
       <img className={s.photo} src={ProfilePhoto} alt="profile_photo" />

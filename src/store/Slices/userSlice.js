@@ -30,11 +30,12 @@ export const userSlice = createSlice({
       state.password = actions.payload.password;
     },
 
-    setNewLogin (state, actions) {
+    setNewLogin(state, actions) {
       state.login = actions.payload.login;
-    }
+    },
   },
 });
 
-export const { setUser, removeUser, setNewPass, setNewLogin } = userSlice.actions;
+export const { setUser, removeUser, setNewPass, setNewLogin } =
+  userSlice.actions;
 export default userSlice.reducer;

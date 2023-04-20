@@ -6,62 +6,54 @@ import styles from "./index.module.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../img/logo.svg";
 
-
 export function NewPassword({ setActive, setNPass }) {
-
-  const [password, setPassword] = useState('');
-  const [repeatPass, setRepeatPass] = useState('');
+  const [password, setPassword] = useState("");
+  const [repeatPass, setRepeatPass] = useState("");
   const [error, setError] = useState(null);
 
   const dispatch = useDispatch();
 
   function updatePass() {
+    const auth = getAuth();
 
-      const auth = getAuth();
+    const user = auth.currentUser;
+    const newPassword = password;
 
-      const user = auth.currentUser;
-      const newPassword = password;
-
-      updatePassword(user, newPassword).then(() => {
-
+    updatePassword(user, newPassword)
+      .then(() => {
         dispatch(
           setNewPass({
-            password: password
+            password: password,
           })
-        )
+        );
         setNPass(password);
-        setActive(false)
-        
-      }).catch((error) => {
-
-        setError(error.message)
-
+        setActive(false);
+      })
+      .catch((error) => {
+        setError(error.message);
       });
-
   }
 
   function newPass(e) {
-      e.preventDefault();
+    e.preventDefault();
 
-      if(!password) {
-        setError('Введите новый пароль')
-        return
-      }
+    if (!password) {
+      setError("Введите новый пароль");
+      return;
+    }
 
-      if(!repeatPass) {
-          setError('Повторите новый пароль')
-          return
-      }
+    if (!repeatPass) {
+      setError("Повторите новый пароль");
+      return;
+    }
 
-      if(password !== repeatPass) {
-        setError('Кажется, введенные пароли не совпадают')
-        return
-      }
+    if (password !== repeatPass) {
+      setError("Кажется, введенные пароли не совпадают");
+      return;
+    }
 
-      updatePass();
-
+    updatePass();
   }
-
 
   return (
     <div className={styles.modal} onClick={() => setActive(false)}>
@@ -88,9 +80,7 @@ export function NewPassword({ setActive, setNPass }) {
             value={repeatPass}
             onChange={(e) => setRepeatPass(e.target.value)}
           ></input>
-          {(error) && 
-          <p className={styles.error}>{error}</p>
-          }
+          {error && <p className={styles.error}>{error}</p>}
           <button onClick={newPass} className={styles.button}>
             Сохранить
           </button>

@@ -1,10 +1,10 @@
-import Button from './Button/index'
+import Button from "./Button/index";
 
-import cn from 'classnames'
-import classes from './index.module.css'
+import cn from "classnames";
+import classes from "./index.module.css";
 
 const ButtonMain = ({ colorBtn, content, btnClassName, ...attrs }) => {
-  const color = colorBtn === 'white' ? 'white' : 'violet'
+  const color = colorBtn === "white" ? "white" : "violet";
 
   return (
     <Button
@@ -13,7 +13,7 @@ const ButtonMain = ({ colorBtn, content, btnClassName, ...attrs }) => {
     >
       {content}
     </Button>
-  )
-}
+  );
+};
 
-export default ButtonMain
+export default ButtonMain;

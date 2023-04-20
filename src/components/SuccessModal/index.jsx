@@ -1,19 +1,17 @@
-import Modal from './Modal/index'
-import { ReactComponent as Success } from './success.svg'
-import classes from './index.module.css'
-import { useEffect } from 'react'
-
-
+import Modal from "./Modal/index";
+import { ReactComponent as Success } from "./success.svg";
+import classes from "./index.module.css";
+import { useEffect } from "react";
 
 const SuccessModal = ({ setIsSuccessModalShown }) => {
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setIsSuccessModalShown(false)
-    }, 1000)
+      setIsSuccessModalShown(false);
+    }, 1000);
 
-    return () => clearTimeout(timerId)
-  }, [setIsSuccessModalShown])
-  
+    return () => clearTimeout(timerId);
+  }, [setIsSuccessModalShown]);
+
   return (
     <Modal>
       <div className={classes.content}>
@@ -21,7 +19,7 @@ const SuccessModal = ({ setIsSuccessModalShown }) => {
         <Success />
       </div>
     </Modal>
-  )
-}
+  );
+};
 
-export default SuccessModal
+export default SuccessModal;
