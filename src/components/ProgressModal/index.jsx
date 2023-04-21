@@ -5,19 +5,19 @@ import InputProgress from "./Progress/index";
 import { getUserId } from "../../Hooks/user-auth";
 import {
   useAddUserProgressMutation,
-  useGetWorkoutByIdQuery,
+
 } from "../../services/courses";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+
 
 const ProgressModal = ({ data, onClick, workout }) => {
   const maxValue = data.exercise.map((item) => item[1]);
   console.log(maxValue);
   const [userProgress] = useAddUserProgressMutation();
   const userId = useSelector(getUserId);
-  // const [progr, setProgr] = useState('');
 
-  const { data: workoutById } = useGetWorkoutByIdQuery([workout.id]);
+
+ // const { data: workoutById } = useGetWorkoutByIdQuery([workout.id]);
 
   const {
     register,
