@@ -21,9 +21,9 @@ const Progress = ({ data, workoutId }) => {
       Object.entries(workoutProgress).forEach(([key, value]) => {
         userProgress2.push(value);
       });
-    } else {
+    } /*else {
       const userProgress3 = [];
-    }
+    }*/
 
     return (
       <div className={classes.progress}>
