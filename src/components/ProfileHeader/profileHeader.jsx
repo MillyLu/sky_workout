@@ -10,7 +10,9 @@ export function Header() {
         <Logo alt="logo" />
       </Link>
       <div className={styles.user}>
-        <Profile profile={true} />
+        <Link to="/profile">
+          <Profile profile={true} />
+        </Link>
       </div>
     </header>
   );

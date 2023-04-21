@@ -1,20 +1,22 @@
-import React from 'react';
-import cn from 'classnames';
-import classes from './index.module.css';
-import { useGetUserProgressByIdQuery } from '../../services/courses';
-import { useSelector } from 'react-redux';
-import { getUserId } from '../../Hooks/user-auth';
-
+import React from "react";
+import cn from "classnames";
+import classes from "./index.module.css";
+import { useGetUserProgressByIdQuery } from "../../services/courses";
+import { useSelector } from "react-redux";
+import { getUserId } from "../../Hooks/user-auth";
 
 const Progress = ({ data, workoutId }) => {
   const userId = useSelector(getUserId);
-  const { data: userProgress1, isSuccess, isError } = useGetUserProgressByIdQuery(userId);
-  
+  const {
+    data: userProgress1,
+    isSuccess,
+    isError,
+  } = useGetUserProgressByIdQuery(userId);
 
   if (isSuccess) {
     const workoutProgress = userProgress1[workoutId]?.progress;
     const userProgress2 = [];
-    
+
     if (workoutProgress) {
       Object.entries(workoutProgress).forEach(([key, value]) => {
         userProgress2.push(value);
@@ -22,9 +24,8 @@ const Progress = ({ data, workoutId }) => {
     } else {
       const userProgress3 = [];
     }
-    
-  
-   return (
+
+    return (
       <div className={classes.progress}>
         <h2 className={classes.title}>Мой прогресс по тренировке:</h2>
         <ul className={classes.list}>
@@ -41,10 +42,7 @@ const Progress = ({ data, workoutId }) => {
                   )}
                 >
                   <div
-                    className={cn(
-                      classes.done,
-                      classes[`color${index + 1}`]
-                    )}
+                    className={cn(classes.done, classes[`color${index + 1}`])}
                     style={{ width: `${percent}%` }}
                   ></div>
                   <span
@@ -66,11 +64,6 @@ const Progress = ({ data, workoutId }) => {
   } else {
     console.log(isError);
   }
-
-
-  }
-
-  
-
+};
 
 export default Progress;

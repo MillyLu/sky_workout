@@ -37,6 +37,8 @@ export function SelectWorkout({ setModalActiveWorkout, workout }) {
                 title={item.name}
                 description={item.description}
                 path={"/workout/" + item._id}
+                userProgress={userProgress}
+                workout={item}
               />
             ))}
         </div>

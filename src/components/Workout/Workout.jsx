@@ -1,10 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./index.module.css";
-import { ReactComponent as Done } from "./done.svg";
 import { Link } from "react-router-dom";
+import { useGetWorkoutDoneQuery } from "../../services/courses";
+import { getUserId } from "../../Hooks/user-auth";
+import { useSelector } from "react-redux";
 
-export function Workout({ title, description, path }) {
-  const [active] = useState(true); /// true - если тренировка выполнена
+export function Workout({ title, description, path, userProgress, workout }) {
+  const [active, setActive] = useState(false); /// true - если тренировка выполнена
+  const workoutId = workout._id;
+  console.log(workoutId);
+  const userId = useSelector(getUserId);
+
+  const { data: Done } = useGetWorkoutDoneQuery({
+    id: userId,
+    workoutId,
+  });
+
+  console.log(Done);
+
+  useEffect(() => {
+    if (Done === "done") {
+      setActive(true);
+    }
+  }, [Done]);
 
   return (
     <Link className={styles.link} to={path}>

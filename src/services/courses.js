@@ -142,6 +142,7 @@ export const coursesApi = createApi({
               _id: payload.id,
               workout: payload.workoutId,
               progress: payload.progress,
+              status: payload.status,
             }
           );
           return { userProgressAdd };
@@ -179,6 +180,22 @@ export const coursesApi = createApi({
         }
       },
       providesTags: ["Courses"],
+    }),
+
+    getWorkoutDone: builder.query({
+      async queryFn(payload) {
+        try {
+          const dbRef = ref(db);
+          const WorkoutDone = await get(
+            child(dbRef, `progress/${payload.id}/${payload.workoutId}/status`)
+          );
+          return { data: WorkoutDone.val() };
+        } catch (e) {
+          console.log(e);
+          return { error: e };
+        }
+      },
+      providesTags: ["Progress"],
     }),
 
     getUserProgressById: builder.query({
@@ -239,4 +256,5 @@ export const {
   useUpdateUserLoginMutation,
   useAddUserProgressMutation,
   useGetUserProgressByIdQuery,
+  useGetWorkoutDoneQuery,
 } = coursesApi;
