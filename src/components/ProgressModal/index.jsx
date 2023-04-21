@@ -1,45 +1,75 @@
-import { useState } from 'react'
 import ButtonMain from '../Exercises/ButtonMain/index'
 import classes from './index.module.css'
+import { useForm } from 'react-hook-form'
+import  InputProgress  from './Progress/index'
+import { getUserId } from '../../Hooks/user-auth' 
+import { useAddUserProgressMutation, useGetWorkoutByIdQuery  } from '../../services/courses'
+import { useSelector } from 'react-redux'
 
-  const ProgressModal = ({ data, onClick }) => {
-    const [exerciseCounts, setExerciseCounts] = useState(
-      Array(data.length).fill(1)
-    );
-  
-    const handleInputChange = (index, event) => {
-      const value = parseInt(event.target.value);
-      const newCounts = [...exerciseCounts];
-      newCounts[index] = isNaN(value) ? 1 : Math.max(1, Math.min(value, data[index][1]));
-      setExerciseCounts(newCounts);
-    };
-  
-   
 
-    return (
-      <form className={classes.form} >
+const ProgressModal = ({ data, onClick, workout }) => {
+  
+  const maxValue = data.exercise.map((item) => item[1])
+  console.log(maxValue)
+  const [userProgress] = useAddUserProgressMutation();
+  const userId = useSelector(getUserId);
+  
+  const { data: workoutById } = useGetWorkoutByIdQuery([workout.id]);
+  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    onClick();
+    
+    const userValues = Object.values(data);
+    const maxUserValue = Math.max(...userValues);
+  
+    let progressStatus;
+    if (maxUserValue < Math.max(...maxValue)) {
+      progressStatus = 'in progress';
+    } else if (maxUserValue === Math.max(...maxValue)) {
+      progressStatus = 'done';
+    }
+  
+    userProgress({
+      id: userId,
+      progress: data,
+      workoutId: workout.id,
+      status: progressStatus
+      
+    });
+
+    console.log(progressStatus)
+  };
+
+  return (
+    <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={classes.title}>Мой прогресс</h2>
       <div className={classes.inputs}>
         {data?.exercise?.map((exercise, index) => (
-          <div key={index} >
+          <div key={index}>
             <label className={classes.text}>
               {`Сколько раз вы сделали упражнение ${exercise[0].toLowerCase()}?`}
-              <input
-              className={classes.input}
-                type="number"
-                value={exerciseCounts[index]}
-                min={1}
+              <InputProgress
+                name={exercise[0]}
+                register={register}
+                errors={errors}
                 max={exercise[1]}
-                onChange={(e) => handleInputChange(index, e)}
-
-              />
+                            
+                            />
             </label>
+            
           </div>
         ))}
-     </div>
+      </div>
       <ButtonMain type="submit" content="Отправить" />
-      </form>
-    );
-  };
-  
-  export default ProgressModal;
+    </form>
+  );
+};
+
+export default ProgressModal;
+
