@@ -1,21 +1,24 @@
-import ButtonMain from '../Exercises/ButtonMain/index'
-import classes from './index.module.css'
-import { useForm } from 'react-hook-form'
-import  InputProgress  from './Progress/index'
-import { getUserId } from '../../Hooks/user-auth' 
-import { useAddUserProgressMutation, useGetWorkoutByIdQuery  } from '../../services/courses'
-import { useSelector } from 'react-redux'
-
+import ButtonMain from "../Exercises/ButtonMain/index";
+import classes from "./index.module.css";
+import { useForm } from "react-hook-form";
+import InputProgress from "./Progress/index";
+import { getUserId } from "../../Hooks/user-auth";
+import {
+  useAddUserProgressMutation,
+  useGetWorkoutByIdQuery,
+} from "../../services/courses";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const ProgressModal = ({ data, onClick, workout }) => {
-  
-  const maxValue = data.exercise.map((item) => item[1])
-  console.log(maxValue)
+  const maxValue = data.exercise.map((item) => item[1]);
+  console.log(maxValue);
   const [userProgress] = useAddUserProgressMutation();
   const userId = useSelector(getUserId);
-  
+  // const [progr, setProgr] = useState('');
+
   const { data: workoutById } = useGetWorkoutByIdQuery([workout.id]);
-  
+
   const {
     register,
     handleSubmit,
@@ -23,27 +26,27 @@ const ProgressModal = ({ data, onClick, workout }) => {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data);
     onClick();
-    
+
     const userValues = Object.values(data);
     const maxUserValue = Math.max(...userValues);
-  
+
     let progressStatus;
     if (maxUserValue < Math.max(...maxValue)) {
-      progressStatus = 'in progress';
+      progressStatus = "in progress";
     } else if (maxUserValue === Math.max(...maxValue)) {
-      progressStatus = 'done';
+      progressStatus = "done";
     }
-  
+
     userProgress({
       id: userId,
-      progress: data,
+      progress: userValues,
       workoutId: workout.id,
-      status: progressStatus
-      
+      status: progressStatus,
     });
 
-    console.log(progressStatus)
+    console.log(progressStatus);
   };
 
   return (
@@ -59,10 +62,8 @@ const ProgressModal = ({ data, onClick, workout }) => {
                 register={register}
                 errors={errors}
                 max={exercise[1]}
-                            
-                            />
+              />
             </label>
-            
           </div>
         ))}
       </div>
@@ -72,4 +73,3 @@ const ProgressModal = ({ data, onClick, workout }) => {
 };
 
 export default ProgressModal;
-

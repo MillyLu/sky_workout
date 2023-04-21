@@ -6,7 +6,7 @@ const Exercises = ({ onClick, data }) => {
     <div>
       <h2 className={classes.title}>Упражнения</h2>
       <ul className={classes.list}>
-      {data?.exercise?.map(( exercise, index) => (
+        {data?.exercise?.map((exercise, index) => (
           <li key={index} className={classes.listItem}>
             {exercise[0]} ({exercise[1]} повторений)
           </li>
