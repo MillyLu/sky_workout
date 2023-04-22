@@ -40,6 +40,12 @@ export const LogIn = ({ setSignUp, setActive }) => {
         setMailError("Не правильный e-mail");
         return;
       }
+
+      if (errorCode === "auth/wrong-password") {
+        setPass("");
+        setPassError("Не правильный пароль");
+        return;
+      }
     }
   };
 
@@ -58,17 +64,17 @@ export const LogIn = ({ setSignUp, setActive }) => {
         onChange={(e) => setMail(e.target.value)}
       />
       {passError ? (
-        setPass("")
+        <input
+          className={`${s.input} ${s.input_password} ${s.error}`}
+          type="password"
+          value=""
+        />
       ) : (
         <input
-          className={
-            passError
-              ? `${s.input} ${s.input_password} ${s.error}`
-              : `${s.input} ${s.input_password}`
-          }
+          className={`${s.input} ${s.input_password}`}
           type="password"
           value={pass}
-          placeholder={passError ? { passError } : "Пароль"}
+          placeholder={passError ? passError : "Пароль"}
           onChange={(e) => setPass(e.target.value)}
         />
       )}

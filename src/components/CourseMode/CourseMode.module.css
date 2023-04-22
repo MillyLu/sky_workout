@@ -214,3 +214,24 @@
 .error {
   color: red;
 }
+
+.application_added {
+  width: 275px;
+  height: 52px;
+  background: #ffffff;
+  border-radius: 46px;
+  border: 1px solid #000000;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+  margin-top: 34px;
+  transition: all 0.3s;
+      display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}

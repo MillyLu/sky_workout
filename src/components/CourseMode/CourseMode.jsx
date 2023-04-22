@@ -18,16 +18,12 @@ import { getUserId } from "../../Hooks/user-auth";
 
 export const CourseMode = ({ id }) => {
   const [error, setError] = useState(false);
+  const [addWorkout, setAddWorkout] = useState(false);
   const [addCourse] = useAddCourseToUserMutation();
   const { data } = useGetCourseByIdQuery(id.id);
   const userId = useSelector(getUserId);
 
-  console.log(id);
-  console.log(data);
-
   function onHandleClick() {
-    console.log(userId);
-    console.log(id.id);
     if (!userId) {
       setError(true);
       return;
@@ -36,6 +32,7 @@ export const CourseMode = ({ id }) => {
       id: userId,
       courseId: id.id,
     });
+      setAddWorkout(true);
   }
 
   return (
@@ -54,8 +51,7 @@ export const CourseMode = ({ id }) => {
             : data?.name === "Танцевальный фитнес"
             ? s.skill_card_dancefitness
             : s.skill_card_stepaerobics
-        }
-      >
+        }>
         <h1
           to="/"
           className={s.skill_card_name}
@@ -69,8 +65,7 @@ export const CourseMode = ({ id }) => {
               : data?.name === "Танцевальный фитнес"
               ? Dance
               : Step
-          }
-        >
+          }>
           {data?.name}
         </h1>
       </div>
@@ -113,9 +108,15 @@ export const CourseMode = ({ id }) => {
             выбором направления и тренера, с которым тренировки принесут
             здоровье и радость!
           </p>
-          <button onClick={onHandleClick} className={s.application_button}>
-            Записаться на тренировку
-          </button>
+          {addWorkout ? (
+            <div className={s.application_added}>
+              Записан!
+            </div>
+          ) : (
+            <button onClick={onHandleClick} className={s.application_button}>
+              Записаться на тренировку
+            </button>
+          )}
           {error && (
             <p className={s.error}>
               Для записи на тренировку необходимо войти или зарегистрироваться!

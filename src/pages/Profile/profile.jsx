@@ -16,8 +16,6 @@ import {
 export function Profile() {
   const [modalActivePass, setModalActivePass] = useState(false);
   const [modalActiveLogin, setModalActiveLogin] = useState(false);
-  //  const [modalActiveWorkout, setModalActiveWorkout] = useState(false);
-  //  const [workout, setWorkout] = useState("");
   const [nLogin, setNLogin] = useState("");
   const [nPass, setNPass] = useState("");
 
@@ -25,15 +23,11 @@ export function Profile() {
 
   const { data: userCoursesIds } = useGetUserCoursesQuery(userId);
 
-  const { data: allCour } = useGetCoursesQuery();
-  console.log(allCour);
-
   const { data } = useGetCoursesQuery("", {
     selectFromResult: ({ data }) => ({
       data: data?.filter((course) => userCoursesIds?.includes(course._id)),
     }),
   });
-  console.log(data);
 
   return (
     <div className={styles.content}>

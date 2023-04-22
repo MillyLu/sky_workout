@@ -55,12 +55,22 @@
   font-size: 18px;
   line-height: 24px;
   letter-spacing: -0.003em;
-  color: #e1e1e1;
+  color: #03020a;
+  outline: none;
   padding: 8px 0px;
   border-width: 0 0 1px 0;
   border-color: #d0cece;
   margin-top: 12px;
   margin-bottom: 10px;
+}
+
+.input::placeholder {
+  font-family: "StratosSkyeng", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #d0cece;
 }
 
 .button {
