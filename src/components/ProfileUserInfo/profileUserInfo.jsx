@@ -4,8 +4,6 @@ import styles from "./index.module.css";
 import { Icon } from "react-icons-kit";
 import { eye } from "react-icons-kit/feather/eye";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
-import { useAuth } from "../../Hooks/user-auth";
-import { getAuth } from "@firebase/auth";
 import { getUserId, getUserPass } from "../../Hooks/user-auth";
 import { useGetloginByIdQuery } from "../../services/courses";
 
@@ -15,9 +13,6 @@ export function ProfileUserInfo({
   nLogin,
   nPass,
 }) {
-  const user = useAuth();
-  const auth = getAuth();
-  const userDB = auth.currentUser;
   const userId = useSelector(getUserId);
   const userPass = useSelector(getUserPass);
   const { data } = useGetloginByIdQuery(userId);
@@ -26,8 +21,6 @@ export function ProfileUserInfo({
   const [hidePass, setHidePass] = useState(true);
   const [showPass, setShowPass] = useState(false);
   const [icon, setIcon] = useState(eyeOff);
-
-  console.log(userDB.displayName);
 
   useEffect(() => {
     if (!nLogin) return;
@@ -38,10 +31,6 @@ export function ProfileUserInfo({
     if (!nPass) return;
     setPass(nPass);
   }, [nPass]);
-
-  console.log(user);
-  console.log(data);
-  console.log(userPass);
 
   function handleChange() {
     if (hidePass) {

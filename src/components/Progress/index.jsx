@@ -21,9 +21,7 @@ const Progress = ({ data, workoutId }) => {
       Object.entries(workoutProgress).forEach(([key, value]) => {
         userProgress2.push(value);
       });
-    } /*else {
-      const userProgress3 = [];
-    }*/
+    }
 
     return (
       <div className={classes.progress}>
@@ -52,9 +50,6 @@ const Progress = ({ data, workoutId }) => {
                     {percent}%
                   </span>
                 </div>
-                {/* <button onClick={()=> console.log(Object.entries(pr).forEach(([key, value]) => {
-      console.log( value)
-    })) }>ffff</button> */}
               </li>
             );
           })}

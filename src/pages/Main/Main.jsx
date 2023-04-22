@@ -21,7 +21,6 @@ export const Main = ({ user }) => {
   const [signUp, setSignUp] = useState(false);
 
   const { data } = useGetCoursesQuery();
-  console.log(data);
 
   const scrollToTop = () => {
     window.scrollTo({

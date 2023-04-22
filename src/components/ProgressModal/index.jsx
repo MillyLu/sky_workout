@@ -12,12 +12,8 @@ import { useSelector } from "react-redux";
 
 const ProgressModal = ({ data, onClick, workout }) => {
   const maxValue = data.exercise.map((item) => item[1]);
-  console.log(maxValue);
   const [userProgress] = useAddUserProgressMutation();
   const userId = useSelector(getUserId);
-
-
- // const { data: workoutById } = useGetWorkoutByIdQuery([workout.id]);
 
   const {
     register,
@@ -26,7 +22,6 @@ const ProgressModal = ({ data, onClick, workout }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     onClick();
 
     const userValues = Object.values(data);
@@ -45,8 +40,6 @@ const ProgressModal = ({ data, onClick, workout }) => {
       workoutId: workout.id,
       status: progressStatus,
     });
-
-    console.log(progressStatus);
   };
 
   return (

@@ -29,24 +29,8 @@ export function ProfileCourses() {
     }),
   });
 
-  /* const YogaOnClick = () => {
-    setWorkout("Yoga");
-    setModalActiveWorkout(true);
-  };
-
-  const StretchingOnClick = () => {
-    setWorkout("Stretching");
-    setModalActiveWorkout(true);
-  };
-
-  const BodyflexOnClick = () => {
-    setWorkout("Bodyflex");
-    setModalActiveWorkout(true);
-  }; */
-
   const onClick = (e) => {
     setWorkout(e.target.value);
-    console.log(workout);
     setModalActiveWorkout(true);
   };
 
