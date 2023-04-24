@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import styles from "./index.module.css";
-import Yoga from "./joga.png";
-import Stretching from "./stretching.png";
-import Dance from "./dance.png";
-import Step from "./step.png";
-import Bodyflex from "./bodyflex1.png";
+import styles from "./ProfileCourse.module.css";
+import Yoga from "../../assets/img/joga.png";
+import Stretching from "../../assets/img/stretching.png";
+import Dance from "../../assets/img/dance.png";
+import Step from "../../assets/img/step.png";
+import Bodyflex from "../../assets/img/bodyflex.png";
 import { WorkoutItem } from "../WorkoutItem/WorkoutItem";
 import { Button } from "../WorkoutItem/Button";
-import { SelectWorkout } from "../../components/SelectWorkout/SelectWorkout";
-import { getUserId } from "../../Hooks/user-auth";
+import { SelectWorkout } from "../SelectWorkout/SelectWorkout";
+import { getUserId } from "../../hooks/user-auth";
 import { useGetUserCoursesQuery } from "../../services/courses";
 import { useGetCoursesQuery } from "../../services/courses";
 

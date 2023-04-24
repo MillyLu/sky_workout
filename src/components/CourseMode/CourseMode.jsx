@@ -1,29 +1,29 @@
 import s from "./CourseMode.module.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { ReactComponent as Logo } from "./img/logo.svg";
-import { ReactComponent as One } from "./img/1.svg";
-import { ReactComponent as Two } from "./img/2.svg";
-import { ReactComponent as Three } from "./img/3.svg";
-import { ReactComponent as Phone } from "./img/phone.svg";
-import Yoga from "./img/skill_card_yoga.jpg";
-import Bodyflex from "./img/skill_card_bodyflex.jpg";
-import Step from "./img/skill_card_stepaerobics.jpg";
-import Stretching from "./img/skill_card_stretching.jpg";
-import Dance from "./img/skill_card_dancefitness.jpg";
-import { useAddCourseToUserMutation } from "./services/courses";
-import { useGetCourseByIdQuery } from "./services/courses";
+import { useCallback, useState } from "react";
+import { ReactComponent as Logo } from "../../assets/img/logo.svg";
+import { ReactComponent as One } from "../../assets/img/1.svg";
+import { ReactComponent as Two } from "../../assets/img/2.svg";
+import { ReactComponent as Three } from "../../assets/img/3.svg";
+import { ReactComponent as Phone } from "../../assets/img/phone.svg";
+import Yoga from "../../assets/img/skill_card_yoga.jpg";
+import Bodyflex from "../../assets/img/skill_card_bodyflex.jpg";
+import Step from "../../assets/img/skill_card_stepaerobics.jpg";
+import Stretching from "../../assets/img/skill_card_stretching.jpg";
+import Dance from "../../assets/img/skill_card_dancefitness.jpg";
+import { useAddCourseToUserMutation } from "../../services/courses";
+import { useGetCourseByIdQuery } from "../../services/courses";
 import { useSelector } from "react-redux";
-import { getUserId } from "./Hooks/user-auth";
+import { getUserId } from "../../hooks/user-auth";
 
 export const CourseMode = ({ id }) => {
   const [error, setError] = useState(false);
   const [addWorkout, setAddWorkout] = useState(false);
   const [addCourse] = useAddCourseToUserMutation();
-  const { data } = useGetCourseByIdQuery(id.id);
+  const { data: course } = useGetCourseByIdQuery(id.id);
   const userId = useSelector(getUserId);
 
-  function onHandleClick() {
+  const onHandleClick = useCallback(() => {
     if (!userId) {
       setError(true);
       return;
@@ -33,7 +33,7 @@ export const CourseMode = ({ id }) => {
       courseId: id.id,
     });
     setAddWorkout(true);
-  }
+  }, [userId, addCourse, id.id ]);
 
   return (
     <div className={s.course_description}>
@@ -42,13 +42,13 @@ export const CourseMode = ({ id }) => {
       </Link>
       <div
         className={
-          data?.name === "Йога"
+          course?.name === "Йога"
             ? s.skill_card_yoga
-            : data?.name === "Бодифлекс"
+            : course?.name === "Бодифлекс"
             ? s.skill_card_bodyflex
-            : data?.name === "Стретчинг"
+            : course?.name === "Стретчинг"
             ? s.skill_card_stretching
-            : data?.name === "Танцевальный фитнес"
+            : course?.name === "Танцевальный фитнес"
             ? s.skill_card_dancefitness
             : s.skill_card_stepaerobics
         }>
@@ -56,17 +56,17 @@ export const CourseMode = ({ id }) => {
           to="/"
           className={s.skill_card_name}
           url={
-            data?.name === "Йога"
+            course?.name === "Йога"
               ? Yoga
-              : data?.name === "Бодифлекс"
+              : course?.name === "Бодифлекс"
               ? Bodyflex
-              : data?.name === "Стретчинг"
+              : course?.name === "Стретчинг"
               ? Stretching
-              : data?.name === "Танцевальный фитнес"
+              : course?.name === "Танцевальный фитнес"
               ? Dance
               : Step
           }>
-          {data?.name}
+          {course?.name}
         </h1>
       </div>
 
@@ -75,15 +75,15 @@ export const CourseMode = ({ id }) => {
         <div className={s.causes}>
           <div className={s.cause}>
             <One className={s.cause_number} />
-            <p className={s.text}>{data?.cause[0]}</p>
+            <p className={s.text}>{course?.cause[0]}</p>
           </div>
           <div className={s.cause}>
             <Two className={s.cause_number} />
-            <p className={s.text}>{data?.cause[1]}</p>
+            <p className={s.text}>{course?.cause[1]}</p>
           </div>
           <div className={s.cause}>
             <Three className={s.cause_number} />
-            <p className={s.text}>{data?.cause[2]}</p>
+            <p className={s.text}>{course?.cause[2]}</p>
           </div>
         </div>
       </div>
@@ -91,15 +91,15 @@ export const CourseMode = ({ id }) => {
         <h3 className={s.directions}>Направления:</h3>
         <div>
           <div className={s.textDirections}>
-            {data?.directions &&
-              data?.directions.map((item) => <p key={item}>• {item}</p>)}
+            {course?.directions &&
+              course?.directions.map((item) => <p key={item}>• {item}</p>)}
           </div>
         </div>
       </div>
       <p className={s.description}>
-        {data?.definition}
+        {course?.definition}
         <br />
-        {data?.description}
+        {course?.description}
       </p>
       <div className={s.application}>
         <div className={s.application_top}>

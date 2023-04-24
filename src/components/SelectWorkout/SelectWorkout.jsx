@@ -1,4 +1,4 @@
-import styles from "./index.module.css";
+import styles from "./SelectWorkout.module.css";
 import { Workout } from "../Workout/Workout";
 import {
   useGetWorkoutsQuery,
@@ -6,7 +6,7 @@ import {
   useGetUserProgressByIdQuery,
 } from "../../services/courses";
 import { useSelector } from "react-redux";
-import { getUserId } from "../../Hooks/user-auth";
+import { getUserId } from "../../hooks/user-auth";
 
 export function SelectWorkout({ setModalActiveWorkout, workout }) {
   const { data: courseWorkouts } = useGetAllWorkoutsInCourseQuery(workout);

@@ -1,5 +1,5 @@
 import cn from "classnames";
-import classes from "./index.module.css";
+import classes from "./Progress.module.css";
 
 const InputProgress = ({ className, register, errors, name, max }) => {
   return (

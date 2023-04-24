@@ -22,7 +22,7 @@ export const Main = ({ user }) => {
 
   const { data } = useGetCoursesQuery();
 
-  const scrollToTop = () => {
+  const onScrollToTopClick = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -78,7 +78,7 @@ export const Main = ({ user }) => {
             </Link>
           ))}
       </div>
-      <button className={s.up_button} onClick={scrollToTop}>
+      <button className={s.up_button} onClick={onScrollToTopClick}>
         Наверх ↑
       </button>
       {modalActive && (

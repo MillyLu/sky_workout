@@ -1,5 +1,5 @@
 import s from "./Profile.module.css";
-import ProfilePhoto from "./img/profile_img.jpg";
+import ProfilePhoto from "../../assets/img/profile_img.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserId } from "../../hooks/user-auth";
 import { removeUser } from "../../store/slices/userSlice";
@@ -8,7 +8,7 @@ import { useGetloginByIdQuery } from "../../services/courses";
 export const Profile = ({ profile }) => {
   const dispatch = useDispatch();
 
-  const toggleLogOut = () => {
+  const onLogOutClick = () => {
     dispatch(removeUser());
   };
 
@@ -22,7 +22,7 @@ export const Profile = ({ profile }) => {
 
       <button
         className={profile ? s.buttonNotMain : s.button}
-        onClick={toggleLogOut}
+        onClick={onLogOutClick}
       >
         Выйти
       </button>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import styles from "./index.module.css";
+import styles from "./Workout.module.css";
 import { Link } from "react-router-dom";
 import { useGetWorkoutDoneQuery } from "../../services/courses";
-import { getUserId } from "../../Hooks/user-auth";
+import { getUserId } from "../../hooks/user-auth";
 import { useSelector } from "react-redux";
 
 export function Workout({ title, description, path, userProgress, workout }) {

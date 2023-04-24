@@ -1,6 +1,6 @@
 import cn from "classnames";
 
-import classes from "./index.module.css";
+import classes from "./Button.module.css";
 
 const Button = ({ type, disabled, className, children, onClick, ...attrs }) => {
   return (

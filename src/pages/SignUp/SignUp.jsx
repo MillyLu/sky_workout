@@ -1,9 +1,9 @@
 import s from "./SignUp.module.css";
-import { ReactComponent as Logo } from "../../img/logo.svg";
+import { ReactComponent as Logo } from "../../assets/img/logo.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "../../store/Slices/userSlice";
+import { setUser } from "../../store/slices/userSlice";
 import { useAddUserMutation } from "../../services/courses";
 
 export const SignUp = ({ setActive }) => {
@@ -20,7 +20,7 @@ export const SignUp = ({ setActive }) => {
 
   const auth = getAuth();
 
-  const toggleSignUp = async () => {
+  const onSignUpClick = async () => {
     if (pass !== repeatPass) {
       setError("Ошибка");
       setPass("");
@@ -112,7 +112,7 @@ export const SignUp = ({ setActive }) => {
         placeholder={error ? "Пароли не совпадают!" : "Повторите пароль"}
         onChange={(e) => setRepeatPass(e.target.value)}
       />
-      <button className={s.button_registration} onClick={toggleSignUp}>
+      <button className={s.button_registration} onClick={onSignUpClick}>
         Зарегистрироваться
       </button>
     </div>

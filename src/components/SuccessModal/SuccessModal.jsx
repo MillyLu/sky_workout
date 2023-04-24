@@ -1,6 +1,6 @@
 import Modal from "./Modal/index";
-import { ReactComponent as Success } from "./success.svg";
-import classes from "./index.module.css";
+import { ReactComponent as Success } from "../../assets/img/success.svg";
+import classes from "./SuccessModal.module.css";
 import { useEffect } from "react";
 
 const SuccessModal = ({ setIsSuccessModalShown }) => {

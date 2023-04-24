@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import styles from "./index.module.css";
+import styles from "./ProfileUserInfo.module.css";
 import { Icon } from "react-icons-kit";
 import { eye } from "react-icons-kit/feather/eye";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
-import { getUserId, getUserPass } from "../../Hooks/user-auth";
+import { getUserId, getUserPass } from "../../hooks/user-auth";
 import { useGetloginByIdQuery } from "../../services/courses";
 
 export function ProfileUserInfo({
@@ -32,7 +32,7 @@ export function ProfileUserInfo({
     setPass(nPass);
   }, [nPass]);
 
-  function handleChange() {
+  const onHandleChangeClick = useCallback(() => {
     if (hidePass) {
       setIcon(eye);
       setHidePass(false);
@@ -42,7 +42,7 @@ export function ProfileUserInfo({
     setIcon(eyeOff);
     setHidePass(true);
     setShowPass(false);
-  }
+  }, [hidePass]);
 
   return (
     <div className={styles.userInfo}>
@@ -70,7 +70,7 @@ export function ProfileUserInfo({
           />
         )}
 
-        <span onClick={handleChange}>
+        <span onClick={onHandleChangeClick}>
           <Icon icon={icon} size={25} />
         </span>
       </div>

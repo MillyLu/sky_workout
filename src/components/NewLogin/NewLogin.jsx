@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setNewLogin } from "../../store/Slices/userSlice";
+import { setNewLogin } from "../../store/slices/userSlice";
 import { getAuth, updateProfile } from "firebase/auth";
 import { useUpdateUserLoginMutation } from "../../services/courses";
-import { getUserId } from "../../Hooks/user-auth";
-import styles from "./index.module.css";
+import { getUserId } from "../../hooks/user-auth";
+import styles from "./NewLogin.module.css";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../img/logo.svg";
+import { ReactComponent as Logo } from "../../assets/img/logo.svg";
 
 export function NewLogin({ setModalActiveLogin, setNLogin }) {
   const [login, setLogin] = useState("");
@@ -41,7 +41,7 @@ export function NewLogin({ setModalActiveLogin, setNLogin }) {
       });
   }
 
-  function changeLogin(e) {
+  function onChangeLoginClick(e) {
     e.preventDefault();
 
     if (!login) {
@@ -71,7 +71,7 @@ export function NewLogin({ setModalActiveLogin, setNLogin }) {
             onChange={(e) => setLogin(e.target.value)}
           ></input>
           {error && <p className={styles.error}>{error}</p>}
-          <button onClick={changeLogin} className={styles.button}>
+          <button onClick={onChangeLoginClick} className={styles.button}>
             Сохранить
           </button>
         </form>

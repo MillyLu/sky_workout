@@ -1,8 +1,8 @@
-import ButtonMain from "../Exercises/ButtonMain/index";
-import classes from "./index.module.css";
+import ButtonMain from "../Exercises/ButtonMain/ButtonMain";
+import classes from "./ProgressModal.module.css";
 import { useForm } from "react-hook-form";
-import InputProgress from "./Progress/index";
-import { getUserId } from "../../Hooks/user-auth";
+import InputProgress from "./Progress/Progress";
+import { getUserId } from "../../hooks/user-auth";
 import {
   useAddUserProgressMutation,
 
@@ -17,7 +17,7 @@ const ProgressModal = ({ data, onClick, workout }) => {
 
   const {
     register,
-    handleSubmit,
+    onHandleSubmit,
     formState: { errors },
   } = useForm();
 
@@ -43,7 +43,7 @@ const ProgressModal = ({ data, onClick, workout }) => {
   };
 
   return (
-    <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={classes.form} onSubmit={onHandleSubmit(onSubmit)}>
       <h2 className={classes.title}>Мой прогресс</h2>
       <div className={classes.inputs}>
         {data?.exercise?.map((exercise, index) => (

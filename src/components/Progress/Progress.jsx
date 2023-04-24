@@ -1,12 +1,13 @@
 import React from "react";
 import cn from "classnames";
-import classes from "./index.module.css";
+import classes from "./Progress.module.css";
 import { useGetUserProgressByIdQuery } from "../../services/courses";
 import { useSelector } from "react-redux";
-import { getUserId } from "../../Hooks/user-auth";
+import { getUserId } from "../../hooks/user-auth";
 
 const Progress = ({ data, workoutId }) => {
   const userId = useSelector(getUserId);
+  
   const {
     data: userProgress1,
     isSuccess,
@@ -16,6 +17,7 @@ const Progress = ({ data, workoutId }) => {
   if (isSuccess) {
     const workoutProgress = userProgress1[workoutId]?.progress;
     const userProgress2 = [];
+
 
     if (workoutProgress) {
       Object.entries(workoutProgress).forEach(([key, value]) => {
