@@ -1,8 +1,8 @@
 import { useState } from "react";
 import ReactPlayer from "react-player/youtube";
-import { Header } from "../../components/ProfileHeader/profileHeader";
-import Exercises from "../../components/Exercises";
-import Progress from "../../components/Progress";
+import { Header } from "../../components/ProfileHeader/ProfileHeader";
+import Exercises from "../../components/Exercises/Exercises";
+import Progress from "../../components/Progress/Progress";
 import classes from "./Workout.module.css";
 import ProgressModal from "../../components/ProgressModal/ProgressModal";
 import SuccessModal from "../../components/SuccessModal/SuccessModal";

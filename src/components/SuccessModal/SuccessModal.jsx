@@ -1,4 +1,4 @@
-import Modal from "./Modal/index";
+import Modal from "./Modal/Modal";
 import { ReactComponent as Success } from "../../assets/img/success.svg";
 import classes from "./SuccessModal.module.css";
 import { useEffect } from "react";

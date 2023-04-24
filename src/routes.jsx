@@ -2,10 +2,10 @@ import { Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import { useAuth } from "./hooks/user-auth";
 import { Main } from "./pages/Main/Main";
-import { Profile } from "./pages/Profile/profile";
+import { Profile } from "./pages/Profile/Profile";
 import { Error } from "./pages/Error/Error";
 import { CoursePage } from "./pages/Course/CoursePage";
-import Workout from "./pages/Workout";
+import Workout from "./pages/Workout/Workout";
 
 export const AppRoutes = () => {
   const { isAuth, email } = useAuth();
