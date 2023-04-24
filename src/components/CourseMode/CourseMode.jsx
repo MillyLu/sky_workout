@@ -1,20 +1,20 @@
 import s from "./CourseMode.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { ReactComponent as Logo } from "../../img/logo.svg";
-import { ReactComponent as One } from "../../img/1.svg";
-import { ReactComponent as Two } from "../../img/2.svg";
-import { ReactComponent as Three } from "../../img/3.svg";
-import { ReactComponent as Phone } from "../../img/phone.svg";
-import Yoga from "../../img/skill_card_yoga.jpg";
-import Bodyflex from "../../img/skill_card_bodyflex.jpg";
-import Step from "../../img/skill_card_stepaerobics.jpg";
-import Stretching from "../../img/skill_card_stretching.jpg";
-import Dance from "../../img/skill_card_dancefitness.jpg";
-import { useAddCourseToUserMutation } from "../../services/courses";
-import { useGetCourseByIdQuery } from "../../services/courses";
+import { ReactComponent as Logo } from "./img/logo.svg";
+import { ReactComponent as One } from "./img/1.svg";
+import { ReactComponent as Two } from "./img/2.svg";
+import { ReactComponent as Three } from "./img/3.svg";
+import { ReactComponent as Phone } from "./img/phone.svg";
+import Yoga from "./img/skill_card_yoga.jpg";
+import Bodyflex from "./img/skill_card_bodyflex.jpg";
+import Step from "./img/skill_card_stepaerobics.jpg";
+import Stretching from "./img/skill_card_stretching.jpg";
+import Dance from "./img/skill_card_dancefitness.jpg";
+import { useAddCourseToUserMutation } from "./services/courses";
+import { useGetCourseByIdQuery } from "./services/courses";
 import { useSelector } from "react-redux";
-import { getUserId } from "../../Hooks/user-auth";
+import { getUserId } from "./Hooks/user-auth";
 
 export const CourseMode = ({ id }) => {
   const [error, setError] = useState(false);
@@ -32,7 +32,7 @@ export const CourseMode = ({ id }) => {
       id: userId,
       courseId: id.id,
     });
-      setAddWorkout(true);
+    setAddWorkout(true);
   }
 
   return (
@@ -109,9 +109,7 @@ export const CourseMode = ({ id }) => {
             здоровье и радость!
           </p>
           {addWorkout ? (
-            <div className={s.application_added}>
-              Записан!
-            </div>
+            <div className={s.application_added}>Записан!</div>
           ) : (
             <button onClick={onHandleClick} className={s.application_button}>
               Записаться на тренировку

@@ -1,10 +1,10 @@
-import Logo from "./img/logo.png";
-import Sticker from "./img/sale.png";
-import Joga from "./img/joga.png";
-import Stretching from "./img/stretching.png";
-import Dance from "./img/dance.png";
-import Step from "./img/step.png";
-import Bodyflex from "./img/bodyflex.png";
+import Logo from "../../assets/img/logo_white.png";
+import Sticker from "../../assets/img/sale.png";
+import Joga from "../../assets/img/joga.png";
+import Stretching from "../../assets/img/stretching.png";
+import Dance from "../../assets/img/dance.png";
+import Step from "../../assets/img/step.png";
+import Bodyflex from "../../assets/img/bodyflex.png";
 import { Link } from "react-router-dom";
 import { Modal } from "../../components/Modal/Modal";
 import { LogIn } from "../LogIn/Login";

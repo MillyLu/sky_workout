@@ -1,8 +1,8 @@
 import s from "./Profile.module.css";
-import ProfilePhoto from "./img/img.jpg";
+import ProfilePhoto from "./img/profile_img.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserId } from "../../Hooks/user-auth";
-import { removeUser } from "../../store/Slices/userSlice";
+import { getUserId } from "../../hooks/user-auth";
+import { removeUser } from "../../store/slices/userSlice";
 import { useGetloginByIdQuery } from "../../services/courses";
 
 export const Profile = ({ profile }) => {

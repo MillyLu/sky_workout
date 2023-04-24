@@ -1,11 +1,11 @@
 import s from "./CourseType.module.css";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../img/logo.svg";
-import { ReactComponent as One } from "../../img/1.svg";
-import { ReactComponent as Two } from "../../img/2.svg";
-import { ReactComponent as Three } from "../../img/3.svg";
-import { ReactComponent as Phone } from "../../img/phone.svg";
-import { useAddCourseToUserMutation } from "../../services/courses";
+import { ReactComponent as Logo } from "./img/logo.svg";
+import { ReactComponent as One } from "./img/1.svg";
+import { ReactComponent as Two } from "./img/2.svg";
+import { ReactComponent as Three } from "./img/3.svg";
+import { ReactComponent as Phone } from "./img/phone.svg";
+import { useAddCourseToUserMutation } from "./services/courses";
 
 export const Course = (props) => {
   const [addCourse] = useAddCourseToUserMutation();
