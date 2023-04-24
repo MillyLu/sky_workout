@@ -1,4 +1,4 @@
-import Button from "./Button/button";
+import Button from "./Button/Button";
 
 import cn from "classnames";
 import classes from "./ButtonMain.module.css";

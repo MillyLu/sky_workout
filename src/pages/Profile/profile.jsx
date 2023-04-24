@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./Profile.module.css";
-import { Header } from "../../components/ProfileHeader/profileHeader";
-import { ProfileUserInfo } from "../../components/ProfileUserInfo/profileUserInfo";
-import { ProfileCourses } from "../../components/ProfileCourses/profileCourses";
+import { Header } from "../../components/ProfileHeader/ProfileHeader";
+import { ProfileUserInfo } from "../../components/ProfileUserInfo/ProfileUserInfo";
+import { ProfileCourses } from "../../components/ProfileCourses/ProfileCourses";
 import { NewPassword } from "../../components/NewPassword/NewPassword";
 import { NewLogin } from "../../components/NewLogin/NewLogin";
 
