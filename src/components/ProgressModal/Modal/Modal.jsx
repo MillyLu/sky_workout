@@ -1,5 +1,5 @@
-import classes from "./index.module.css";
-import Portal from "./Portal/index";
+import classes from "./Modal.module.css";
+import Portal from "./Portal/Portal";
 
 const Modal = ({ children, onClick }) => {
   return (

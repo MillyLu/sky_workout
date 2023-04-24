@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
-import { useAuth } from "./Hooks/user-auth";
+import { useAuth } from "./hooks/user-auth";
 import { Main } from "./pages/Main/Main";
 import { Profile } from "./pages/Profile/profile";
 import { Error } from "./pages/Error/Error";

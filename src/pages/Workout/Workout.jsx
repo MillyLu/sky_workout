@@ -3,10 +3,10 @@ import ReactPlayer from "react-player/youtube";
 import { Header } from "../../components/ProfileHeader/profileHeader";
 import Exercises from "../../components/Exercises";
 import Progress from "../../components/Progress";
-import classes from "./index.module.css";
-import ProgressModal from "../../components/ProgressModal/index";
-import SuccessModal from "../../components/SuccessModal/index";
-import Modal from "../../components/ProgressModal/Modal/index";
+import classes from "./Workout.module.css";
+import ProgressModal from "../../components/ProgressModal/ProgressModal";
+import SuccessModal from "../../components/SuccessModal/SuccessModal";
+import Modal from "../../components/ProgressModal/Modal/Modal";
 import { useParams } from "react-router";
 import { useGetWorkoutByIdQuery } from "../../services/courses";
 
@@ -22,9 +22,9 @@ const Workout = () => {
     setIsProgressModalShown(!isProgressModalShown);
   };
 
-  const handleClick = () => setIsProgressModalShown(true);
+  const onHandleClick = () => setIsProgressModalShown(true);
 
-  const handleSendClick = () => {
+  const onHandleSendClick = () => {
     setIsProgressModalShown(false);
     setIsSuccessModalShown(true);
   };
@@ -42,13 +42,13 @@ const Workout = () => {
         </div>
 
         <div className={classes.exercises}>
-          <Exercises data={data} onClick={handleClick} />
+          <Exercises data={data} onClick={onHandleClick} />
           <Progress data={data} workoutId={id.id} />
         </div>
       </main>
       {isProgressModalShown && (
         <Modal onClick={openCloseProgressModal}>
-          <ProgressModal workout={id} data={data} onClick={handleSendClick} />
+          <ProgressModal workout={id} data={data} onClick={onHandleSendClick} />
         </Modal>
       )}
       {isSuccessModalShown && (

@@ -1,7 +1,7 @@
-import Button from "./Button/index";
+import Button from "./Button/button";
 
 import cn from "classnames";
-import classes from "./index.module.css";
+import classes from "./ButtonMain.module.css";
 
 const ButtonMain = ({ colorBtn, content, btnClassName, ...attrs }) => {
   const color = colorBtn === "white" ? "white" : "violet";

@@ -1,9 +1,9 @@
 import s from "./Login.module.css";
-import { ReactComponent as Logo } from "../../img/logo.svg";
+import { ReactComponent as Logo } from "../../assets/img/logo.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "../../store/Slices/userSlice";
+import { setUser } from "../../store/slices/userSlice";
 
 export const LogIn = ({ setSignUp, setActive }) => {
   const [mail, setMail] = useState("");

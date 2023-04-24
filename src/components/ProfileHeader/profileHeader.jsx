@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../img/logo.svg";
+import { ReactComponent as Logo } from "../../assets/img/logo.svg";
 import { Profile } from "../Profile/Profile";
-import styles from "./index.module.css";
+import styles from "./ProfileHeader.module.css";
 
 export function Header() {
   return (

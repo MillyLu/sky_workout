@@ -1,6 +1,6 @@
 import s from "./Error.module.css";
-import { ReactComponent as Logo } from "../../img/logo.svg";
-import Smile from "./img/smile_crying.png";
+import { ReactComponent as Logo } from "../../assets/img/logo.svg";
+import Smile from "../../assets/img/smile_crying.png";
 import { Link } from "react-router-dom";
 
 export const Error = () => {

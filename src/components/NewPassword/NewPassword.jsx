@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getAuth, updatePassword } from "@firebase/auth";
-import { setNewPass } from "../../store/Slices/userSlice";
-import styles from "./index.module.css";
+import { setNewPass } from "../../store/slices/userSlice";
+import styles from "./NewPassword.module.css";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../img/logo.svg";
+import { ReactComponent as Logo } from "../../assets/img/logo.svg";
 
 export function NewPassword({ setActive, setNPass }) {
   const [password, setPassword] = useState("");
@@ -34,7 +34,7 @@ export function NewPassword({ setActive, setNPass }) {
       });
   }
 
-  function newPass(e) {
+  function onNewPassClick(e) {
     e.preventDefault();
 
     if (!password) {
@@ -81,7 +81,7 @@ export function NewPassword({ setActive, setNPass }) {
             onChange={(e) => setRepeatPass(e.target.value)}
           ></input>
           {error && <p className={styles.error}>{error}</p>}
-          <button onClick={newPass} className={styles.button}>
+          <button onClick={onNewPassClick} className={styles.button}>
             Сохранить
           </button>
         </form>

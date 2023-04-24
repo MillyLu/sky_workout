@@ -1,5 +1,5 @@
-import ButtonMain from "./ButtonMain/index";
-import classes from "./index.module.css";
+import ButtonMain from "./ButtonMain/ButtonMain";
+import classes from "./Exercises.module.css";
 
 const Exercises = ({ onClick, data }) => {
   return (
