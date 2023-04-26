@@ -6,18 +6,22 @@ import { getUserId } from "../../hooks/user-auth";
 import {
   useAddUserProgressMutation,
 
+
 } from "../../services/courses";
 import { useSelector } from "react-redux";
 
 
 const ProgressModal = ({ data, onClick, workout }) => {
-  const maxValue = data.exercise.map((item) => item[1]);
+
+  //const { data: , isError } = useGetWorkoutByIdQuery(workout);
+
+  const maxValue = data?.exercise.map((item) => item[1]);
   const [userProgress] = useAddUserProgressMutation();
   const userId = useSelector(getUserId);
 
   const {
     register,
-    onHandleSubmit,
+    handleSubmit,
     formState: { errors },
   } = useForm();
 
@@ -43,7 +47,7 @@ const ProgressModal = ({ data, onClick, workout }) => {
   };
 
   return (
-    <form className={classes.form} onSubmit={onHandleSubmit(onSubmit)}>
+    <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={classes.title}>Мой прогресс</h2>
       <div className={classes.inputs}>
         {data?.exercise?.map((exercise, index) => (

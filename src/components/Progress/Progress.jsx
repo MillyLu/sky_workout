@@ -1,12 +1,14 @@
 import React from "react";
 import cn from "classnames";
 import classes from "./Progress.module.css";
-import { useGetUserProgressByIdQuery } from "../../services/courses";
+import { useGetUserProgressByIdQuery, useGetWorkoutByIdQuery } from "../../services/courses";
 import { useSelector } from "react-redux";
 import { getUserId } from "../../hooks/user-auth";
 
+
 const Progress = ({ data, workoutId }) => {
   const userId = useSelector(getUserId);
+  console.log(data);
   
   const {
     data: userProgress1,
@@ -14,9 +16,23 @@ const Progress = ({ data, workoutId }) => {
     isError,
   } = useGetUserProgressByIdQuery(userId);
 
-  if (isSuccess) {
+
+  console.log(userProgress1);
+
+  /*let Data =   fetch(`https://skypro-workout-default-rtdb.europe-west1.firebasedatabase.app/workouts/${workoutId}.json`)
+  .then(response => response.json())
+  .then(data => Data = data);
+
+ */
+
+  const {data: workoutData, isLoading, isSuccess: workoutDataSuccess} = useGetWorkoutByIdQuery(workoutId)
+  console.log(workoutData);
+
+  const userProgress2 = [];
+
+  if (isSuccess && userProgress1 != null) {
     const workoutProgress = userProgress1[workoutId]?.progress;
-    const userProgress2 = [];
+
 
 
     if (workoutProgress) {
@@ -25,11 +41,19 @@ const Progress = ({ data, workoutId }) => {
       });
     }
 
-    return (
-      <div className={classes.progress}>
-        <h2 className={classes.title}>Мой прогресс по тренировке:</h2>
-        <ul className={classes.list}>
-          {data?.exercise?.map((exercise, index) => {
+
+  } else {
+    console.log(isError);
+  }
+
+  return (
+    <div className={classes.progress}>
+      <h2 className={classes.title}>Мой прогресс по тренировке:</h2>
+      <ul className={classes.list}>
+      {isLoading && <span className={classes.loader}></span>}
+      {
+        workoutDataSuccess && 
+          workoutData?.exercise?.map((exercise, index) => {
             const item = userProgress2[index];
             const percent = Math.round(((item || 0) / exercise[1]) * 100);
             return (
@@ -55,12 +79,12 @@ const Progress = ({ data, workoutId }) => {
               </li>
             );
           })}
-        </ul>
-      </div>
-    );
-  } else {
-    console.log(isError);
-  }
+        
+      
+   
+      </ul>
+    </div>
+  );
 };
 
 export default Progress;

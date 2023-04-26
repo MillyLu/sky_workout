@@ -15,8 +15,14 @@ const Workout = () => {
   const [isSuccessModalShown, setIsSuccessModalShown] = useState(false);
 
   const id = useParams();
+  const workoutId = id.id
+  console.log(workoutId);
 
-  const { data } = useGetWorkoutByIdQuery(id.id);
+  const { data, isError } = useGetWorkoutByIdQuery(workoutId);
+
+  if(isError) {
+    console.log(isError);
+  }
 
   const openCloseProgressModal = () => {
     setIsProgressModalShown(!isProgressModalShown);
@@ -28,6 +34,8 @@ const Workout = () => {
     setIsProgressModalShown(false);
     setIsSuccessModalShown(true);
   };
+
+
 
   return (
     <div className={classes.container}>
